@@ -2,20 +2,26 @@ import React, { Component } from 'react';
 
 class CurrentLocation extends Component {
     
-    
-    onSubmit = (e) => {
-        e.preventDefault();
-        console.log(e.target.value);
+    state = {
+        location: null
     }
     
-    onChange = (e) => {
-        
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
     }
 
     render() {
         return(
-            <form onSubmit={this.onSubmit}>
-                <input type="text" name="zipcode" onChange={ this.onChange } placeholder="Enter Your ZipCode"/>
+            <form id="currentLocationForm" onSubmit={ this.handleSubmit }>
+                <label htmlFor="location">ZipCode: </label>
+                <input type="text" id="location" onChange= { this.handleChange }/>
                 <button>Submit</button>
             </form>
         )

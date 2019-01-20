@@ -21,4 +21,9 @@ p#title {
   margin: 10px auto;
 }
 
+#currentLocationForm {
+  text-align: center;
+}
+
+
 /* div#container {} */

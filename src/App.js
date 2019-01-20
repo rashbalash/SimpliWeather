@@ -7,7 +7,7 @@ class App extends Component {
       <div id="container" className="App">
         <p id="title">Weather</p>
 
-        <CurrentLocation />
+        <CurrentLocation id="currentLocation"/>
 
       </div>
     );
