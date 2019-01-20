@@ -25,5 +25,6 @@ p#title {
   text-align: center;
 }
 
-
-/* div#container {} */
+#currentLocationRequest {
+  text-align: center;
+}
