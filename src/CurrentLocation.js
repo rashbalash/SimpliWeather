@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 class CurrentLocation extends Component {
     
     state = {
-        location: null,
-        latitude: null,
-        longitude: null
+        zipcode: null,
+        lat: null,
+        lon: null
     }
     
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.getLocation(this.state);
     }
 
     handleChange = (e) => {
@@ -27,12 +27,14 @@ class CurrentLocation extends Component {
 
     success = (pos) => {
         var currentCoords = pos.coords;
-        
+
         this.setState({
-            latitude: currentCoords.latitude,
-            longitude: currentCoords.longitude
+            lat: currentCoords.latitude,
+            lon: currentCoords.longitude
         })
-        
+
+        this.props.getLocation(this.state);
+
         console.log('Your current position is:');
         console.log(`Latitude : ${currentCoords.latitude}`);
         console.log(`Longitude: ${currentCoords.longitude}`);
@@ -53,7 +55,7 @@ class CurrentLocation extends Component {
             <div>
                 <form id="currentLocationForm" onSubmit={ this.handleSubmit }>
                     <label htmlFor="location">ZipCode: </label>
-                    <input type="text" id="location" onChange= { this.handleChange }/>
+                    <input type="text" id="zipcode" onChange= { this.handleChange }/>
                     <button>Submit</button>
                 </form>
                 <form id="currentLocationRequest" onSubmit= { this.handleRequest }>
