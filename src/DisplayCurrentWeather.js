@@ -2,10 +2,12 @@ import React from 'react';
 
 function DisplayCurrentWeather(weatherData) {
     
-    console.log(weatherData);
+    var cityName = weatherData.name;
+
+    console.log(cityName);
     
     return(
-        <h1>{ weatherData.name }</h1>
+        <h1>{ cityName }</h1>
     )
 } 
 

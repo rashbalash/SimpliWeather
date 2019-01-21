@@ -35,10 +35,10 @@ class CurrentLocation extends Component {
 
         this.props.getLocation(this.state);
 
-        console.log('Your current position is:');
-        console.log(`Latitude : ${currentCoords.latitude}`);
-        console.log(`Longitude: ${currentCoords.longitude}`);
-        console.log(`More or less ${currentCoords.accuracy} meters.`);
+        // console.log('Your current position is:');
+        // console.log(`Latitude : ${currentCoords.latitude}`);
+        // console.log(`Longitude: ${currentCoords.longitude}`);
+        // console.log(`More or less ${currentCoords.accuracy} meters.`);
     }
 
     error = (err) => {
