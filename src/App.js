@@ -20,7 +20,7 @@ class App extends Component {
 
   getWeather = () => {
     if (this.state.lat != null && this.state.lon != null) {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&appid=c7e4b6ffdc34413cd5d2c37f336b78f4`)
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&appid=41aae642caeac8c0932d9726aad914cd`)
         .then(function(response) {
           return response.json();
         })
@@ -28,7 +28,7 @@ class App extends Component {
           console.log(JSON.stringify(myJson));
         });
     } else if ( this.state.zipcode != null) {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&appid=c7e4b6ffdc34413cd5d2c37f336b78f4`)
+      fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&appid=41aae642caeac8c0932d9726aad914cd`)
         .then(function(response) {
           return response.json();
         })
