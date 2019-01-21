@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import CurrentLocation from './CurrentLocation';
-import DisplayWeather from './DisplayWeather';
+import DisplayCurrentWeather from './DisplayCurrentWeather';
+
+var weatherData;
 
 class App extends Component {
 
   state = {
     zipcode: null, 
     lat: null, 
-    lon: null
+    lon: null,
   }
 
   getLocation = (location) => {
@@ -25,6 +27,8 @@ class App extends Component {
           return response.json();
         })
         .then(function(myJson) {
+          weatherData = myJson;
+          DisplayCurrentWeather(weatherData);
           console.log(JSON.stringify(myJson));
         });
     } else if ( this.state.zipcode != null) {
@@ -51,9 +55,7 @@ class App extends Component {
         <p>{ this.state.zipcode }</p>
         
         { this.getWeather() }
-
-        <DisplayWeather />
-
+        
       </div>
     );
   }
