@@ -9,7 +9,7 @@ class CurrentLocation extends Component {
     }
     
     handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault();       
         this.props.getLocation(this.state);
     }
 
@@ -34,11 +34,6 @@ class CurrentLocation extends Component {
         })
 
         this.props.getLocation(this.state);
-
-        // console.log('Your current position is:');
-        // console.log(`Latitude : ${currentCoords.latitude}`);
-        // console.log(`Longitude: ${currentCoords.longitude}`);
-        // console.log(`More or less ${currentCoords.accuracy} meters.`);
     }
 
     error = (err) => {
@@ -54,7 +49,7 @@ class CurrentLocation extends Component {
         return(
             <div>
                 <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
-                    <label htmlFor="location">Zipcode: </label>
+                    <label htmlFor="zipcode">Zipcode: </label>
                     <input type="text" id="zipcode" onChange= { this.handleChange }/>
                     <button>Submit</button>
                 </form>

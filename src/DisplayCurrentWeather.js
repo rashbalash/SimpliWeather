@@ -9,8 +9,8 @@ function DisplayCurrentWeather(weatherData) {
 
     return(
         <div id="currentWeatherCointainer">
-            <p id="temp">{ Math.round(temp) }&#176;</p>
-            <h1>{ name }, { country }</h1>
+            <p id="locationTemp">{ Math.round(temp) }&#176;</p>
+            <p id="locationName">{ name }, { country }</p>
         </div>
     )
 } 
