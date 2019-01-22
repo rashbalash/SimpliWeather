@@ -1,0 +1,7 @@
+div#currentWeatherCointainer {
+    text-align: center;
+}
+
+p#temp {
+    font-size: 84px;
+}

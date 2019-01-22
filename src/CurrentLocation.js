@@ -53,8 +53,8 @@ class CurrentLocation extends Component {
     render() {
         return(
             <div>
-                <form id="currentLocationForm" onSubmit={ this.handleSubmit }>
-                    <label htmlFor="location">ZipCode: </label>
+                <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
+                    <label htmlFor="location">Zipcode: </label>
                     <input type="text" id="zipcode" onChange= { this.handleChange }/>
                     <button>Submit</button>
                 </form>

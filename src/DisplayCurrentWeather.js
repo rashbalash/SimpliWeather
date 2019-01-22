@@ -1,23 +1,16 @@
 import React from 'react';
+import './DisplayCurrentWeather.css';
 
 function DisplayCurrentWeather(weatherData) {
 
-    // THIS FUNCTION GETS CALLED TWICE, FIX THAT
-
     var { name, sys, main } = weatherData;
-    var country;
-    var temp;
-
-    if (weatherData.hasOwnProperty('sys') && weatherData.hasOwnProperty('main')) {
-        country = sys.country;
-        temp = main.temp;
-    }
+    var country = sys.country;
+    var temp = main.temp;
 
     return(
-        <div>
-            <h1>{ name }</h1>
-            <h1>{ country }</h1>
-            <h1>{ temp }</h1>
+        <div id="currentWeatherCointainer">
+            <p id="temp">{ Math.round(temp) }&#176;</p>
+            <h1>{ name }, { country }</h1>
         </div>
     )
 } 

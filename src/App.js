@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import CurrentLocation from './CurrentLocation';
 import DisplayCurrentWeather from './DisplayCurrentWeather';
 
-// window.weatherData = {};
-
 class App extends Component {
 
   state = {
@@ -30,17 +28,23 @@ class App extends Component {
         })
         .then((myJson) => {
           this.setState({
-            weatherData: myJson
+            weatherData: myJson,
+            lat: null,
+            lon: null,
+            zipcode: null
           });
         });
-    } else if ( this.state.zipcode != null) {
+    } else if (this.state.zipcode != null) {
       fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
           return response.json();
         })
         .then((myJson) => {
           this.setState({
-            weatherData: myJson
+            weatherData: myJson,
+            lat: null,
+            lon: null,
+            zipcode: null
           });
         });
     } else {
@@ -49,14 +53,18 @@ class App extends Component {
   }
 
   render() {
-    const { lat, lon, zipcode, weatherData } = this.state;
+    const { weatherData } = this.state;
     return (
       <div id="container" className="App">
         <p id="title">Weather</p>
 
         <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />
+        
+        { weatherData.hasOwnProperty('name')  ?
+            DisplayCurrentWeather(weatherData) : 
+            <h1 id="enterLocation">Enter Your Location!</h1>
+        }
               
-        { DisplayCurrentWeather(weatherData) }
 
       </div>
     );
