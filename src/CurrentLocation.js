@@ -56,18 +56,21 @@ class CurrentLocation extends Component {
 
     render() {
         return(
-            <div>
-                <p id="mainContext">Click The Icon Below To Allow This Application To Access Your Location!</p>
-                <form id="currentLocationRequest" onSubmit= { this.handleRequest }>
+            <div className="formContainer">
+                <div className="form">
+                    <p id="mainContext">Click The Icon Below To Allow This Application To Access Your Location!</p>
+                    <form id="currentLocationRequest" onSubmit= { this.handleRequest }>
+                        <br/>
+                        <button className="btn"><FaLocationArrow id="locationIcon"/></button>
+                    </form>
+                    <p id="mainContext">Or Enter Your Zipcode!</p>
                     <br/>
-                    <button className="btn"><FaLocationArrow id="locationIcon"/></button>
-                </form>
-                <p id="mainContext">Or Enter Your Zipcode!</p>
-                <br/>
-                <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
-                    <input type="text" id="zipcode" placeholder="Zipcode..." onChange= { this.handleChange }/>
-                    <button>Submit</button>
-                </form>
+                    <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
+                        <input type="text" id="zipcode" placeholder="Zipcode..." onChange= { this.handleChange }/>
+                        <br/>
+                        <button id="submitBtn">Submit</button>
+                    </form>
+                </div>
             </div>
         )
     }

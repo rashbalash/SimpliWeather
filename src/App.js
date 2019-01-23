@@ -7,7 +7,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       zipcode: localStorage.getItem("zipcode"), 
       lat: localStorage.getItem("lat"), 
@@ -34,7 +33,7 @@ class App extends Component {
   }
 
   getWeather = () => {
-    if (this.state.lat != null && this.state.lon != null) {
+    if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
       fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
           return response.json();
@@ -56,7 +55,7 @@ class App extends Component {
             
       //     })
       //   })
-    } else if (this.state.zipcode != null) {
+    } else if (this.state.zipcode != null & this.state.zipcode !== "null") {
       fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
           return response.json();
@@ -70,7 +69,7 @@ class App extends Component {
           });
         });
     } else {
-      console.log("Need Data");
+      console.log("No Data");
     } 
   }
 
@@ -81,6 +80,8 @@ class App extends Component {
         <header id="mainHeader">
           <p id="title">Weather</p>
         </header>
+        
+        {/* <CurrentLocation id="currentLocation" getLocation = { this.getLocation } /> */}
 
         { weatherData.hasOwnProperty('name')  ?
             DisplayCurrentWeather(weatherData) : 

@@ -2,9 +2,9 @@ button.btn {
     background-color: red;
     border: none;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 72px;
     border-radius: 50%;
-    padding: 5px 8px;
+    padding: 6px 15px;
     transition: ease 0.5s;
 }
 
@@ -18,9 +18,10 @@ button.btn:hover {
 }
 
 #locationIcon {
-    margin-top: 5px;
-    margin-right: 3px;
-    margin-left: 2px;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 5px;
+    margin-bottom: 0px;
     color: white;
 }
 
@@ -28,4 +29,34 @@ p#mainContext {
     text-align: center;
     margin-bottom: 0px;
     font-size: 24px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+input#zipcode {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    outline: none;
+    transition: ease .2s;
+    border: 1px solid black;
+    width: 75%;
+    border-radius: 8px;
+}
+
+input#zipcode:focus {
+    border: 3px solid red;
+    transition: ease .2s;
+}
+
+button#submitBtn {
+    border-radius: 8px;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 16px 79px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 75%;
 }
