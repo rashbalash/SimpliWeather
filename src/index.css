@@ -19,6 +19,7 @@ p#title {
   font-size: 60px;
   font-weight: 400;
   margin: 10px auto;
+  margin-bottom: 0px;
 }
 
 #currentLocationForm {

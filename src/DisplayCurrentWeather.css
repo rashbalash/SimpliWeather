@@ -2,19 +2,34 @@ div#currentWeatherCointainer {
     text-align: center;
 }
 
-p#locationTemp {
-    font-size: 84px;
-    font-weight: 100;
-    margin-bottom: 0;
-    margin-top: 8%;
-}
-
 p#locationName {
     margin-top: 0;
-    font-size: 30px;
+    font-size: 26px;
+    color: red;
 }
 
 p#minAndMaxTemp {
     font-size: 24px;
-    margin-top: 0px;
+    margin-top: 5px;
+    clear: both;
+}
+
+div.tempAndIcon {
+    max-width: 50%;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#weatherIcon {
+    height: 120px;
+    float: left;
+}
+
+p#locationTemp {
+    font-size: 84px;
+    font-weight: 100;
+    margin-left: 5px;
+    margin-bottom: 0;
+    margin-top: 5%;
+    float: right;
 }
