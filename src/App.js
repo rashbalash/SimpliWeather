@@ -4,11 +4,18 @@ import DisplayCurrentWeather from './DisplayCurrentWeather';
 
 class App extends Component {
 
-  state = {
-    zipcode: null, 
-    lat: null, 
-    lon: null,
-    weatherData: {}
+  constructor(props) {
+    super(props);
+
+
+    this.state = {
+      zipcode: localStorage.getItem("zipcode"), 
+      lat: localStorage.getItem("lat"), 
+      lon: localStorage.getItem("lon"),
+      weatherData: {}
+    };
+
+    this.getWeather();
   }
 
   getLocation = (location) => {
@@ -17,6 +24,11 @@ class App extends Component {
       lat: location.lat,
       lon: location.lon
     }, () => {
+      if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("zipcode", this.state.zipcode);
+        localStorage.setItem("lat", this.state.lat);
+        localStorage.setItem("lon", this.state.lon);
+      }
       this.getWeather();
     });
   }
