@@ -16,8 +16,9 @@ class App extends Component {
       zipcode: location.zipcode,
       lat: location.lat,
       lon: location.lon
+    }, () => {
+      this.getWeather();
     });
-    this.getWeather();
   }
 
   getWeather = () => {
@@ -69,15 +70,10 @@ class App extends Component {
           <p id="title">Weather</p>
         </header>
 
-        {/* <CurrentLocation id="currentLocation" getLocation = { this.getLocation } /> */}
-        
-
         { weatherData.hasOwnProperty('name')  ?
             DisplayCurrentWeather(weatherData) : 
             <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />
         }
-            {/* <h1 id="enterLocation">Enter Your Location!</h1> */}
-              
 
       </div>
     );

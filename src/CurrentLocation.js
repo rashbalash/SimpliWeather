@@ -13,7 +13,9 @@ class CurrentLocation extends Component {
     handleSubmit = (e) => {
         e.preventDefault();      
         this.setState({
-            [e.target.children[0].id]: e.target.children[0].value        
+            [e.target.children[0].id]: e.target.children[0].value,
+            lat: null,
+            lon: null        
         }, () => {
             console.log(this.state);
             this.props.getLocation(this.state);
@@ -55,13 +57,16 @@ class CurrentLocation extends Component {
     render() {
         return(
             <div>
-                <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
-                    <input type="text" id="zipcode" placeholder="Zipcode..." onChange= { this.handleChange }/>
-                    <button>Submit</button>
-                </form>
+                <p id="mainContext">Click The Icon Below To Allow This Application To Access Your Location!</p>
                 <form id="currentLocationRequest" onSubmit= { this.handleRequest }>
                     <br/>
                     <button className="btn"><FaLocationArrow id="locationIcon"/></button>
+                </form>
+                <p id="mainContext">Or Enter Your Zipcode!</p>
+                <br/>
+                <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
+                    <input type="text" id="zipcode" placeholder="Zipcode..." onChange= { this.handleChange }/>
+                    <button>Submit</button>
                 </form>
             </div>
         )
