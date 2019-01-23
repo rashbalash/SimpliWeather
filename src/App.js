@@ -81,8 +81,6 @@ class App extends Component {
           <p id="title">Weather</p>
         </header>
         
-        {/* <CurrentLocation id="currentLocation" getLocation = { this.getLocation } /> */}
-
         { weatherData.hasOwnProperty('name')  ?
             DisplayCurrentWeather(weatherData) : 
             <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />

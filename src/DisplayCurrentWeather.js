@@ -11,6 +11,11 @@ function DisplayCurrentWeather(weatherData) {
     var maxTemp = main.temp_max;
     var conditions = weather[0].main;
 
+    function handleClear(e) {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     return(
         <div id="currentWeatherCointainer">
             <p id="locationName">{ name }, { country }</p>
@@ -29,6 +34,8 @@ function DisplayCurrentWeather(weatherData) {
             <h1>Hourly</h1>
             <h1>Daily</h1>
             <h1>More About Today</h1>
+
+            <button id="clearData" onClick= { handleClear }>Clear Your Data</button>
 
         </div>
     )
