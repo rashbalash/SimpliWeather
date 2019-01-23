@@ -15,14 +15,14 @@ p#minAndMaxTemp {
 }
 
 div.tempAndIcon {
-    max-width: 50%;
     margin: 0 auto;
     display: inline-block;
 }
 
 #weatherIcon {
-    height: 120px;
+    max-height: 120px;
     float: left;
+
 }
 
 p#locationTemp {
@@ -32,4 +32,13 @@ p#locationTemp {
     margin-bottom: 0;
     margin-top: 5%;
     float: right;
+}
+
+@media screen and (max-width: 300px) {
+    p#locationTemp {
+      font-size: 54px;
+    }
+    #weatherIcon {
+        max-height: 80px;
+    }
 }

@@ -22,6 +22,14 @@ function DisplayCurrentWeather(weatherData) {
             </div>
             
             <p id="minAndMaxTemp">{ conditions } | { Math.round(minTemp) }&#176; | { Math.round(maxTemp) }&#176;</p>
+
+            <br/>
+            <br/>
+            <br/> 
+            <h1>Hourly</h1>
+            <h1>Daily</h1>
+            <h1>More About Today</h1>
+
         </div>
     )
 } 

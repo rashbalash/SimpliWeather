@@ -34,6 +34,15 @@ class App extends Component {
             zipcode: null
           });
         });
+      // fetch(`https://samples.openweathermap.org/data/2.5/forecast?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae22`)
+      //   .then((response) => {
+      //     return response.json();
+      //   })
+      //   .then((fiveDayJson) => {
+      //     this.setState({
+            
+      //     })
+      //   })
     } else if (this.state.zipcode != null) {
       fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
