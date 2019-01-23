@@ -11,6 +11,7 @@ class App extends Component {
       zipcode: localStorage.getItem("zipcode"), 
       lat: localStorage.getItem("lat"), 
       lon: localStorage.getItem("lon"),
+      // units: localStorage.getItem("units"),
       weatherData: {}
     };
 

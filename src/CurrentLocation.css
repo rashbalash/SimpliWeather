@@ -40,8 +40,9 @@ input#zipcode {
     outline: none;
     transition: ease .2s;
     border: 1px solid black;
-    width: 75%;
+    width: 18%;
     border-radius: 8px;
+    text-align: center;
 }
 
 input#zipcode:focus {
@@ -58,5 +59,23 @@ button#submitBtn {
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
-    width: 75%;
+    width: 18%;
+}
+
+@media screen and (max-width: 1100px) {
+    button#submitBtn {
+        width: 30%;
+    }
+    input#zipcode {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    button#submitBtn {
+        width: 80%;
+    }
+    input#zipcode {
+        width: 80%;
+    }
 }
