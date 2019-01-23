@@ -56,14 +56,18 @@ class App extends Component {
     const { weatherData } = this.state;
     return (
       <div id="container" className="App">
-        <p id="title">Weather</p>
+        <header id="mainHeader">
+          <p id="title">Weather</p>
+        </header>
 
-        <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />
+        {/* <CurrentLocation id="currentLocation" getLocation = { this.getLocation } /> */}
         
+
         { weatherData.hasOwnProperty('name')  ?
             DisplayCurrentWeather(weatherData) : 
-            <h1 id="enterLocation">Enter Your Location!</h1>
+            <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />
         }
+            {/* <h1 id="enterLocation">Enter Your Location!</h1> */}
               
 
       </div>

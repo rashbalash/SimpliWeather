@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FaLocationArrow } from 'react-icons/fa';
+import './CurrentLocation.css';
 
 class CurrentLocation extends Component {
     
@@ -9,8 +11,13 @@ class CurrentLocation extends Component {
     }
     
     handleSubmit = (e) => {
-        e.preventDefault();       
-        this.props.getLocation(this.state);
+        e.preventDefault();      
+        this.setState({
+            [e.target.children[0].id]: e.target.children[0].value        
+        }, () => {
+            console.log(this.state);
+            this.props.getLocation(this.state);
+        }); 
     }
 
     handleChange = (e) => {
@@ -49,12 +56,12 @@ class CurrentLocation extends Component {
         return(
             <div>
                 <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
-                    <label htmlFor="zipcode">Zipcode: </label>
-                    <input type="text" id="zipcode" onChange= { this.handleChange }/>
+                    <input type="text" id="zipcode" placeholder="Zipcode..." onChange= { this.handleChange }/>
                     <button>Submit</button>
                 </form>
                 <form id="currentLocationRequest" onSubmit= { this.handleRequest }>
-                    <button>Request Location</button>
+                    <br/>
+                    <button className="btn"><FaLocationArrow id="locationIcon"/></button>
                 </form>
             </div>
         )
