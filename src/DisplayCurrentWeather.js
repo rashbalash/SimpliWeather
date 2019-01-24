@@ -16,10 +16,30 @@ function DisplayCurrentWeather(weatherData) {
     // More About Today
     var humidity = main.humidity;
     var pressure = main.pressure;
-    var sunrise = Date(sys.sunrise);
-    var sunset = Date(sys.sunset);
+    var sunriseTime = (new Date(sys.sunrise*1000)).toLocaleTimeString();
+    var sunsetTime = (new Date(sys.sunset*1000)).toLocaleTimeString();
+    var sunrise = '';
+    var sunset = '';
 
-    console.log(sunrise);
+    if (sunriseTime.length === 10) {
+        // remove indexes 4,5,6
+        sunrise = sunriseTime.slice(0,4);
+        sunrise += " " + sunriseTime.slice(7);
+    } else {
+        // remove indexes 5,6,7
+        sunrise = sunriseTime.slice(0,5);
+        sunrise += " " + sunriseTime.slice(8);
+    }
+
+    if (sunsetTime.length === 10) {
+        // remove indexes 4,5,6
+        sunset = sunsetTime.slice(0,4);
+        sunset += " " + sunsetTime.slice(7);
+    } else {
+        // remove indexes 5,6,7
+        sunset = sunsetTime.slice(0,5);
+        sunset += " " + sunsetTime.slice(8);
+    }
 
     function handleClear(e) {
         localStorage.clear();
