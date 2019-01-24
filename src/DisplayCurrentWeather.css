@@ -50,17 +50,23 @@ h1#section {
 }
 
 div#sectionWrapper {
-    width: 22%;
-    display: inline-block;
+    width: 27%;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 div#matLeft {
     float: left;
+    flex: 1 0 40%;
+    margin-right: 5px;
     text-align: center;
 }
 
 div#matRight {
     float: right;
+    flex: 1 0 40%;
+    margin-left: 5px;
     text-align: center;
 }
 
@@ -82,7 +88,7 @@ div#matRight {
         width: 40%;
     }
     div#sectionWrapper {
-        width: 35%;
+        width: 40%;
     }
 }
 
@@ -91,7 +97,7 @@ div#matRight {
         width: 55%;
     }
     div#sectionWrapper {
-        width: 50%;
+        width: 55%;
     }
 }
 
@@ -100,15 +106,15 @@ div#matRight {
         width: 70%;
     }
     div#sectionWrapper {
-        width: 60%;
+        width: 70%;
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 404px) {
     h1#section {
         width: 80%;
     }
     div#sectionWrapper {
-        width: 70%;
+        width: 80%;
     }
 }

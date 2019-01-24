@@ -89,32 +89,31 @@ function DisplayCurrentWeather(weatherData) {
                     <p id="matTitle">Precipication</p>       
                     <p id="matValue">{ rainPrecipitation } Inches</p> 
                 </div>
+                
                 <div id="matRight">
                     <p id="matTitle">Humidity</p>
                     <p id="matValue">{ humidity }%</p>
                 </div>
-            </div>
-            <br/>
-            <div id="sectionWrapper">
+                
                 <div id="matLeft">
                     <p id="matTitle">Sunrise</p>
                     <p id="matValue">{ sunrise }</p>
                 </div>
+                
                 <div id="matRight">
                     <p id="matTitle">Sunset</p>
                     <p id="matValue">{ sunset }</p>
                 </div>
-            </div>
-            <br/>
-            <div id="sectionWrapper">
+                
                 <div id="matLeft">
                     <p id="matTitle">Wind</p>
                     <p id="matValue">{ Math.round(windSpeed) } mph { windDirection }</p>
                 </div>
+                
                 <div id="matRight">
                     <p id="matTitle">Pressure</p>
                     <p id="matValue">{ pressure } hPa</p>
-                </div>
+                </div>                
             </div>
             
             <br/>
