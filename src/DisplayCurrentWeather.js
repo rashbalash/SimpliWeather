@@ -1,13 +1,12 @@
 import React from 'react';
 import './DisplayCurrentWeather.css';
 import sun from './images/sun.png';
+import DisplayFiveDayWeather from './DisplayFiveDayWeather';
 
-function DisplayCurrentWeather(weatherData) {
+function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
 
     var { name, sys, main, weather, wind } = weatherData;
     
-    console.log(weatherData);
-
     // Current
     var country = sys.country;
     var mainTemp = main.temp;
@@ -80,8 +79,14 @@ function DisplayCurrentWeather(weatherData) {
             <br/> 
             <h1 id="section">Hourly</h1>
             <br/>
+            
             <h1 id="section">Daily</h1>
             <br/>
+            { fiveDayWeatherData.hasOwnProperty('city') ? 
+                DisplayFiveDayWeather(fiveDayWeatherData) :
+                ""
+            }
+
             <h1 id="section">More About Today</h1>
             <br/>
             <div id="sectionWrapper">
