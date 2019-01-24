@@ -51,6 +51,7 @@ input#zipcode:focus {
 }
 
 button#submitBtn {
+    text-align: center;
     border-radius: 8px;
     background-color: red;
     border: none;

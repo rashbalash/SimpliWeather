@@ -5,11 +5,21 @@ import sun from './images/sun.png';
 function DisplayCurrentWeather(weatherData) {
 
     var { name, sys, main, weather } = weatherData;
+    
+    // Current
     var country = sys.country;
     var mainTemp = main.temp;
     var minTemp = main.temp_min;
     var maxTemp = main.temp_max;
     var conditions = weather[0].main;
+
+    // More About Today
+    var humidity = main.humidity;
+    var pressure = main.pressure;
+    var sunrise = Date(sys.sunrise);
+    var sunset = Date(sys.sunset);
+
+    console.log(sunrise);
 
     function handleClear(e) {
         localStorage.clear();
@@ -34,6 +44,10 @@ function DisplayCurrentWeather(weatherData) {
             <h1>Hourly</h1>
             <h1>Daily</h1>
             <h1>More About Today</h1>
+            <p>Humidity: { humidity }%</p>
+            <p>Pressure: { pressure } hPa</p>
+            <p>Sunrise: { sunrise }</p>
+            <p>Sunset: { sunset }</p>
 
             <button id="clearData" onClick= { handleClear }>Clear Your Data</button>
 
