@@ -4,8 +4,10 @@ import sun from './images/sun.png';
 
 function DisplayCurrentWeather(weatherData) {
 
-    var { name, sys, main, weather } = weatherData;
+    var { name, sys, main, weather, wind } = weatherData;
     
+    console.log(weatherData);
+
     // Current
     var country = sys.country;
     var mainTemp = main.temp;
@@ -20,6 +22,20 @@ function DisplayCurrentWeather(weatherData) {
     var sunsetTime = (new Date(sys.sunset*1000)).toLocaleTimeString();
     var sunrise = '';
     var sunset = '';
+    var windDirection = wind.deg;
+    var windSpeed = wind.speed;
+
+    if (weatherData.hasOwnProperty('rain')) {
+        var { rain } = weatherData;
+        var rainPrecipitation = rain["1h"] ? rain["1h"]*0.0393701 : rain["3h"]*0.0393701;
+    }
+
+    // if (weatherData.hasOwnProperty('snow')) {
+    //     var { snow } = weatherData;
+    //     if (snow["1h"]) {
+    //         var snowPrecipitation = snow["1h"] ? snow["1h"]*0.0393701 : snow["3h"]*0.0393701;
+    //     }
+    // }
 
     if (sunriseTime.length === 10) {
         // remove indexes 4,5,6
@@ -58,18 +74,34 @@ function DisplayCurrentWeather(weatherData) {
             
             <p id="minAndMaxTemp">{ conditions } | { Math.round(minTemp) }&#176; | { Math.round(maxTemp) }&#176;</p>
 
-            <br/>
-            <br/>
             <br/> 
-            <h1>Hourly</h1>
-            <h1>Daily</h1>
-            <h1>More About Today</h1>
-            <p>Humidity: { humidity }%</p>
-            <p>Pressure: { pressure } hPa</p>
-            <p>Sunrise: { sunrise }</p>
-            <p>Sunset: { sunset }</p>
+            <h1 id="section">Hourly</h1>
+            <br/>
+            <h1 id="section">Daily</h1>
+            <br/>
+            <h1 id="section">More About Today</h1>
+            <div id="matPrecipitation">
+                <p id="matTitle">Precipication:</p>       
+                <p id="matValue">{ Math.round(rainPrecipitation) } Inches</p> 
+            </div>
+            <div>
+                <p id="matTitle">Humidity:</p>
+                <p id="matValue">{ humidity }%</p>
+            </div>
+            
+
+
+            <br/>
+            <br/>
+            <br/>
+            <p id="matTitle">Sunrise: { sunrise }</p>
+            <p id="matTitle">Sunset: { sunset }</p>
+            <p id="matTitle">Wind Direction: { windDirection } Degrees</p>
+            <p id="matTitle">Wind Speed: { Math.round(windSpeed) } mph</p>
+            <p id="matTitle">Pressure: { pressure } hPa</p>
 
             <button id="clearData" onClick= { handleClear }>Clear Your Data</button>
+            <br/>
 
         </div>
     )

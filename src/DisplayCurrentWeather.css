@@ -42,3 +42,50 @@ p#locationTemp {
         max-height: 80px;
     }
 }
+
+h1#section {
+    width: 25%;
+    text-align: left;
+    display: inline-block;
+}
+
+
+
+/* 
+div#matPrecipitation {
+    
+    display: inline-block;
+    float: left;
+}
+
+#matTitle {
+    text-decoration: underline;
+}
+
+#matValue {
+
+} */
+
+@media screen and (max-width: 1100px) {
+    h1#section {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    h1#section {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    h1#section {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    h1#section {
+        width: 80%;
+    }
+}
