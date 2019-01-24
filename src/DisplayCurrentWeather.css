@@ -49,26 +49,40 @@ h1#section {
     display: inline-block;
 }
 
-
-
-/* 
-div#matPrecipitation {
-    
+div#sectionWrapper {
+    width: 22%;
     display: inline-block;
-    float: left;
 }
 
+div#matLeft {
+    float: left;
+    text-align: center;
+}
+
+div#matRight {
+    float: right;
+    text-align: center;
+}
+
+
+
 #matTitle {
+    font-size: 20px;
     text-decoration: underline;
+    text-align: center;
 }
 
 #matValue {
-
-} */
+    font-size: 18px;
+    text-align: center;
+}
 
 @media screen and (max-width: 1100px) {
     h1#section {
         width: 40%;
+    }
+    div#sectionWrapper {
+        width: 35%;
     }
 }
 
@@ -76,16 +90,25 @@ div#matPrecipitation {
     h1#section {
         width: 55%;
     }
+    div#sectionWrapper {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 550px) {
     h1#section {
         width: 70%;
     }
+    div#sectionWrapper {
+        width: 60%;
+    }
 }
 
 @media screen and (max-width: 400px) {
     h1#section {
         width: 80%;
+    }
+    div#sectionWrapper {
+        width: 70%;
     }
 }
