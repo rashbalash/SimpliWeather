@@ -22,12 +22,15 @@ function DisplayCurrentWeather(weatherData) {
     var sunsetTime = (new Date(sys.sunset*1000)).toLocaleTimeString();
     var sunrise = '';
     var sunset = '';
-    var windDirection = wind.deg;
+    
+    var windDegree = Math.round(((wind.deg) / 45) + 0.5);
+    var windArr = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+    var windDirection = windArr[(windDegree%8)];
     var windSpeed = wind.speed;
 
     if (weatherData.hasOwnProperty('rain')) {
         var { rain } = weatherData;
-        var rainPrecipitation = Math.round((rain["1h"]*0.0393701)*10)/10;
+        var rainPrecipitation = Math.round((rain["1h"])*10)/10;
     }
 
     // if (weatherData.hasOwnProperty('snow')) {
