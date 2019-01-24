@@ -2,6 +2,7 @@ import React from 'react';
 import './DisplayCurrentWeather.css';
 import sun from './images/sun.png';
 import DisplayFiveDayWeather from './DisplayFiveDayWeather';
+import HourlyWeather from './HourlyWeather';
 
 function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
 
@@ -29,7 +30,7 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
 
     if (weatherData.hasOwnProperty('rain')) {
         var { rain } = weatherData;
-        var rainPrecipitation = Math.round((rain["1h"])*10)/10;
+        var rainPrecipitation = Math.round((rain["1h"]*0.0393701)*10)/10;
     }
 
     // if (weatherData.hasOwnProperty('snow')) {
@@ -42,21 +43,21 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
     if (sunriseTime.length === 10) {
         // remove indexes 4,5,6
         sunrise = sunriseTime.slice(0,4);
-        sunrise += " " + sunriseTime.slice(7);
+        sunrise += sunriseTime.slice(7);
     } else {
         // remove indexes 5,6,7
         sunrise = sunriseTime.slice(0,5);
-        sunrise += " " + sunriseTime.slice(8);
+        sunrise += sunriseTime.slice(8);
     }
 
     if (sunsetTime.length === 10) {
         // remove indexes 4,5,6
         sunset = sunsetTime.slice(0,4);
-        sunset += " " + sunsetTime.slice(7);
+        sunset += sunsetTime.slice(7);
     } else {
         // remove indexes 5,6,7
         sunset = sunsetTime.slice(0,5);
-        sunset += " " + sunsetTime.slice(8);
+        sunset += sunsetTime.slice(8);
     }
 
     function handleClear(e) {
@@ -79,7 +80,11 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
             <br/> 
             <h1 id="section">Hourly</h1>
             <br/>
-            
+            { fiveDayWeatherData.hasOwnProperty('city') ? 
+                HourlyWeather(fiveDayWeatherData) :
+                ""
+            }
+
             <h1 id="section">Daily</h1>
             <br/>
             { fiveDayWeatherData.hasOwnProperty('city') ? 

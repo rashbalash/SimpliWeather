@@ -2,10 +2,18 @@ import React from 'react';
 
 function DisplayFiveDayWeather(fiveDayWeatherData) {
 
-    console.log(fiveDayWeatherData);
+    var { list } = fiveDayWeatherData;
+
+    var timeRaw = new Date(list[0].dt_txt);
+
+    var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var dayOfWeek = week[timeRaw.getDay()];
 
     return (
-        <h1>Hello World!</h1>
+        <div>
+            <h3>Daily Data Here</h3>
+            <h4>{ dayOfWeek }</h4>
+        </div>
     )
 }
 
