@@ -1,4 +1,5 @@
 import React from 'react';
+import './DisplayFiveDayWeather.css';
 
 function DisplayFiveDayWeather(fiveDayWeatherData) {
 
@@ -6,17 +7,16 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
 
     var timeRaw;
 
-    const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     var dayOfWeek = "";
 
     var fiveDayData = [];
+    var daysConditions = [];
     var todaysDate = new Date().getUTCDate();
     var listDate;
     var minTemp = 0;
     var maxTemp = 0;
-    var condition = 0;
-
-    console.log(fiveDayWeatherData);
+    var condition;
 
     for (var i = 0; i < list.length; i++) {
 
@@ -25,6 +25,7 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
         if (todaysDate === listDate) continue;
 
         var newDay = 0;
+        daysConditions = [];
         minTemp = Math.round(list[i].main.temp_min);
         maxTemp = Math.round(list[i].main.temp_max);
 
@@ -41,6 +42,7 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
                 maxTemp = Math.round(list[i].main.temp_max);
             }
 
+            daysConditions.push(list[i].weather[0].main);
 
             i++;
             newDay++;
@@ -49,20 +51,26 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
                 break;
             } 
         }
+                
+        var averageCondition = daysConditions.reduce( (prev, cur) => {
+            prev[cur] = (prev[cur] || 0) + 1;
+            return prev;
+        }, {});
 
+        condition = Object.keys(averageCondition)[0];
+        
         fiveDayData.push(
-            <div className = "dataWrapper">
+            <div className = "dailyData">
                 <p className = "dayOfWeek">{ dayOfWeek }</p>
                 <p className = "dataValue">{ minTemp }&#176; | { maxTemp }&#176;</p>
-                {/* <p className = "dataValue">{ condition }</p> */}
+                <p className = "dataValue">{ condition }</p>
             </div>
         );
 
     }
 
     return (
-        <div>
-            <h3>Daily Data Here</h3>
+        <div id="fiveDayDataWrapper">
             { fiveDayData }
         </div>
     )
