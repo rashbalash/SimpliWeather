@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CurrentLocation from './CurrentLocation';
 import DisplayCurrentWeather from './DisplayCurrentWeather';
+import WeatherIcon from './weatherAnimation/WeatherIcon';
 
 class App extends Component {
 
@@ -44,9 +45,6 @@ class App extends Component {
         .then((myJson) => {
           this.setState({
             weatherData: myJson,
-            // lat: null,
-            // lon: null,
-            // zipcode: null
           });
         });
     } else if (this.state.zipcode != null & this.state.zipcode !== "null") {
@@ -57,9 +55,6 @@ class App extends Component {
         .then((myJson) => {
           this.setState({
             weatherData: myJson,
-            // lat: null,
-            // lon: null,
-            // zipcode: null
           });
         });
     } else {
@@ -108,7 +103,15 @@ class App extends Component {
     if (hasLoadedWeather) {
       return DisplayCurrentWeather(weatherData, fiveDayWeatherData);
     } else if (hasLocation) {
-      return null;
+      var currentTime = new Date().getHours();
+      var conditionNumber = 0;
+
+      if (currentTime > 6 && currentTime < 6) {
+        conditionNumber = 800;
+      } else {
+        conditionNumber = 799;
+      }
+      return WeatherIcon(conditionNumber);
     } else {
       return <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />;
     }
@@ -131,6 +134,3 @@ class App extends Component {
 }
 
 export default App;
-
-// api call in app.js is fine
-// 

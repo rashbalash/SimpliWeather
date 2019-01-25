@@ -9,7 +9,7 @@ button.btn {
 }
 
 button.btn:hover {
-    background-color: darkred;
+    background-color: #AA0E11;
     transition: ease 0.5s;
 }
 
@@ -65,7 +65,7 @@ button#submitBtn {
 }
 
 button#submitBtn:hover {
-    background-color: darkred;
+    background-color: #AA0E11;
     transition: ease 0.5s;
 }
 

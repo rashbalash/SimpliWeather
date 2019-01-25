@@ -1,8 +1,8 @@
 import React from 'react';
 import './DisplayCurrentWeather.css';
-import sun from './images/sun.png';
 import DisplayFiveDayWeather from './DisplayFiveDayWeather';
 import HourlyWeather from './HourlyWeather';
+import WeatherIcon from './weatherAnimation/WeatherIcon';
 
 function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
 
@@ -14,6 +14,7 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
     var minTemp = main.temp_min;
     var maxTemp = main.temp_max;
     var conditions = weather[0].main;
+    var conditionNumber = weather[0].id;
 
     // More About Today
     var humidity = main.humidity;
@@ -73,7 +74,7 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
 
             {/* Display Icon Based On Weather */}
             <div className="tempAndIcon">
-                <img src={ sun } alt="sunny" id="weatherIcon"/>
+                { WeatherIcon(conditionNumber) }
                 <p id="locationTemp">{ Math.round(mainTemp) }&#176;</p>
             </div>
             
