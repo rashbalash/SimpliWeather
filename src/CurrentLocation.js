@@ -17,7 +17,6 @@ class CurrentLocation extends Component {
             lat: null,
             lon: null        
         }, () => {
-            console.log(this.state);
             this.props.getLocation(this.state);
         }); 
     }

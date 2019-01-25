@@ -25,17 +25,16 @@ function HourlyWeather(fiveDayWeatherData) {
             time = timeRaw.slice(0,5);
         }
         
-        
         hourlyData.push(
             <div className = "dataWrapper">
                 <p>{ time }</p>
-                <p>{ temp }</p>
-                <p>{ condition }</p>
+                <p className = "dataValue">{ temp }&#176;</p>
+                <p className = "dataValue">{ condition }</p>
             </div>
         );
-
     }
   
+
     return(
         <div id="hourlyDataWrapper">
             { hourlyData }

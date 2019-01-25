@@ -2,11 +2,43 @@ div#hourlyDataWrapper {
     display: flex;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    width: 40%;
+    width: 25%;
     margin: auto;
     overflow: auto;
 }
 
 div.dataWrapper {
     margin: 0px 15px;
+}
+
+p.dataValue {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+
+
+@media screen and (max-width: 1100px) {
+    div#hourlyDataWrapper {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    div#hourlyDataWrapper {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    div#hourlyDataWrapper {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 404px) {
+    div#hourlyDataWrapper {
+        width: 80%;
+    }
 }
