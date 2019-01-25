@@ -31,6 +31,8 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
     if (weatherData.hasOwnProperty('rain')) {
         var { rain } = weatherData;
         var rainPrecipitation = Math.round((rain["1h"]*0.0393701)*10)/10;
+    } else {
+        rainPrecipitation = 0;
     }
 
     // if (weatherData.hasOwnProperty('snow')) {

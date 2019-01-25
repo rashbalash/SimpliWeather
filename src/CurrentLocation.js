@@ -66,7 +66,7 @@ class CurrentLocation extends Component {
                     <p id="mainContext">Or Enter Your Zipcode!</p>
                     <br/>
                     <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
-                        <input type="text" id="zipcode" placeholder="Zipcode..." onChange= { this.handleChange }/>
+                        <input type="text" id="zipcode" placeholder="Zipcode..." required onChange= { this.handleChange }/>
                         <br/>
                         <button id="submitBtn">Submit</button>
                     </form>
