@@ -1,0 +1,12 @@
+div#hourlyDataWrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 40%;
+    margin: auto;
+    overflow: auto;
+}
+
+div.dataWrapper {
+    margin: 0px 15px;
+}

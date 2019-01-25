@@ -99,18 +99,31 @@ class App extends Component {
     } 
   }
 
+  renderContent = () => {
+    const { weatherData, fiveDayWeatherData, zipcode, lat } = this.state;
+
+    const hasLoadedWeather = weatherData.hasOwnProperty('name');
+    const hasLocation = zipcode || lat;
+    
+    if (hasLoadedWeather) {
+      return DisplayCurrentWeather(weatherData, fiveDayWeatherData);
+    } else if (hasLocation) {
+      return null;
+    } else {
+      return <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />;
+    }
+  }
+
   render() {
-    const { weatherData, fiveDayWeatherData } = this.state;
+    
+
     return (
       <div id="container" className="App">
         <header id="mainHeader">
           <p id="title">Weather</p>
         </header>
 
-        { weatherData.hasOwnProperty('name') ?
-            DisplayCurrentWeather(weatherData, fiveDayWeatherData) : 
-            <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />
-        }
+        { this.renderContent() }
 
       </div>
     );

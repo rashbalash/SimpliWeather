@@ -61,6 +61,12 @@ button#submitBtn {
     margin: 4px 2px;
     cursor: pointer;
     width: 18%;
+    transition: ease 0.5s;
+}
+
+button#submitBtn:hover {
+    background-color: darkred;
+    transition: ease 0.5s;
 }
 
 @media screen and (max-width: 1100px) {

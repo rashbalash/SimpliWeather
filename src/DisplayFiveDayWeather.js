@@ -9,6 +9,8 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
     var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var dayOfWeek = week[timeRaw.getDay()];
 
+    console.log(fiveDayWeatherData);
+
     return (
         <div>
             <h3>Daily Data Here</h3>
