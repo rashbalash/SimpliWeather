@@ -106,7 +106,7 @@ class App extends Component {
     } else if (hasLocation) {
       var conditionNumber = 0;
 
-      if (currentTime > 6 && currentTime < 6) {
+      if (currentTime > 6 && currentTime < 18) {
         conditionNumber = 800;
       } else {
         conditionNumber = 799;
@@ -118,8 +118,6 @@ class App extends Component {
   }
 
   render() {
-    
-
     return (
       <div id="container" className="App">
         <header id="mainHeader">

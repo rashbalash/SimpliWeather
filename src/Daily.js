@@ -52,9 +52,9 @@ function Daily(dailyWeatherData) {
 
             if (!list[i]) {
                 break;
-            } 
+            }
         }
-                
+
         var averageCondition = daysConditions.reduce( (prev, cur) => {
             prev[cur] = (prev[cur] || 0) + 1;
             return prev;

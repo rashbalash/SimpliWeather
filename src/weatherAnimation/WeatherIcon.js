@@ -1,4 +1,5 @@
 import React from 'react';
+import './WeatherIcon.css';
 
 import { ReactComponent as Cloudy } from './animated/cloudy.svg';
 import { ReactComponent as CloudyDay } from './animated/cloudyDay.svg';
