@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FaLocationArrow } from 'react-icons/fa';
-import './CurrentLocation.css';
+import './LocationRequest.css';
 
-class CurrentLocation extends Component {
+class LocationRequest extends Component {
     
     state = {
         zipcode: null,
@@ -58,13 +58,13 @@ class CurrentLocation extends Component {
             <div className="formContainer">
                 <div className="form">
                     <p id="mainContext">Click The Icon Below To Allow This Application To Access Your Location!</p>
-                    <form id="currentLocationRequest" onSubmit= { this.handleRequest }>
+                    <form id="LocationRequest" onSubmit= { this.handleRequest }>
                         <br/>
                         <button className="btn"><FaLocationArrow id="locationIcon"/></button>
                     </form>
                     <p id="mainContext">Or Enter Your Zipcode!</p>
                     <br/>
-                    <form id="currentLocationForm" onSubmit= { this.handleSubmit }>
+                    <form id="LocationRequestForm" onSubmit= { this.handleSubmit }>
                         <input type="text" id="zipcode" placeholder="Zipcode..." required onChange= { this.handleChange }/>
                         <br/>
                         <button id="submitBtn">Submit</button>
@@ -75,4 +75,4 @@ class CurrentLocation extends Component {
     }
 }
 
-export default CurrentLocation;
+export default LocationRequest;

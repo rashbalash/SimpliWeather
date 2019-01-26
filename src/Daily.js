@@ -1,16 +1,16 @@
 import React from 'react';
-import './DisplayFiveDayWeather.css';
+import './Daily.css';
 
-function DisplayFiveDayWeather(fiveDayWeatherData) {
+function Daily(dailyWeatherData) {
 
-    const { list } = fiveDayWeatherData;
+    const { list } = dailyWeatherData;
 
     var timeRaw;
 
     const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     var dayOfWeek = "";
 
-    var fiveDayData = [];
+    var dailyData = [];
     var daysConditions = [];
     var todaysDate = new Date().getDay();
     var listDate;
@@ -61,7 +61,7 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
 
         condition = Object.keys(averageCondition)[0];
         
-        fiveDayData.push(
+        dailyData.push(
             <div className = "dailyData">
                 <p className = "dayOfWeek">{ dayOfWeek }</p>
                 <p className = "dataValue">{ minTemp }&#176; | { maxTemp }&#176;</p>
@@ -72,10 +72,10 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
     }
 
     return (
-        <div id="fiveDayDataWrapper">
-            { fiveDayData }
+        <div id="dailyDataWrapper">
+            { dailyData }
         </div>
     )
 }
 
-export default DisplayFiveDayWeather;
+export default Daily;

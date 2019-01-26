@@ -1,10 +1,10 @@
 import React from 'react';
-import './DisplayCurrentWeather.css';
-import DisplayFiveDayWeather from './DisplayFiveDayWeather';
+import './CurrentWeather.css';
+import Daily from './Daily';
 import Hourly from './Hourly';
 import WeatherIcon from './weatherAnimation/WeatherIcon';
 
-function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
+function CurrentWeather(weatherData, dailyWeatherData) {
 
     var { name, sys, main, weather, wind } = weatherData;
     
@@ -84,15 +84,15 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
             <br/> 
             <h1 id="section">Hourly</h1>
             <br/>
-            { fiveDayWeatherData.hasOwnProperty('city') ? 
-                Hourly(fiveDayWeatherData) :
+            { dailyWeatherData.hasOwnProperty('city') ? 
+                Hourly(dailyWeatherData) :
                 ""
             }
 
             <h1 id="section">Daily</h1>
             <br/>
-            { fiveDayWeatherData.hasOwnProperty('city') ? 
-                DisplayFiveDayWeather(fiveDayWeatherData) :
+            { dailyWeatherData.hasOwnProperty('city') ? 
+                Daily(dailyWeatherData) :
                 ""
             }
 
@@ -137,4 +137,4 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
     )
 } 
 
-export default DisplayCurrentWeather;
+export default CurrentWeather;

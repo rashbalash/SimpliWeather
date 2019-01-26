@@ -1,9 +1,9 @@
 import React from 'react';
 import './Hourly.css';
 
-function Hourly(fiveDayWeatherData) {
+function Hourly(dailyWeatherData) {
 
-    var { list } = fiveDayWeatherData;
+    var { list } = dailyWeatherData;
 
     var temp;
     var condition;

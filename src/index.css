@@ -22,11 +22,11 @@ p#title {
   margin-bottom: 0px;
 }
 
-#currentLocationForm {
+#LocationRequestForm {
   text-align: center;
 }
 
-#currentLocationRequest {
+#LocationRequest {
   text-align: center;
 }
 

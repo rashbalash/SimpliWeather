@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CurrentLocation from './CurrentLocation';
-import DisplayCurrentWeather from './DisplayCurrentWeather';
+import LocationRequest from './LocationRequest';
+import CurrentWeather from './CurrentWeather';
 import WeatherIcon from './weatherAnimation/WeatherIcon';
 
 class App extends Component {
@@ -13,11 +13,11 @@ class App extends Component {
       lat: localStorage.getItem("lat"), 
       lon: localStorage.getItem("lon"),
       weatherData: {},
-      fiveDayWeatherData: {}
+      dailyWeatherData: {}
     };
 
     this.getCurrentWeather();
-    this.getFiveDayWeather();
+    this.getDailyWeather();
   }
 
   getLocation = (location) => {
@@ -32,7 +32,7 @@ class App extends Component {
         localStorage.setItem("lon", this.state.lon);
       }
       this.getCurrentWeather();
-      this.getFiveDayWeather();
+      this.getDailyWeather();
     });
   }
 
@@ -62,7 +62,7 @@ class App extends Component {
     } 
   }
 
-  getFiveDayWeather = () => {
+  getDailyWeather = () => {
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
       fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${ this.state.lat }&lon=${ this.state.lon }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
@@ -70,7 +70,7 @@ class App extends Component {
       })
       .then((myJson) => {
         this.setState({
-          fiveDayWeatherData: myJson,
+          dailyWeatherData: myJson,
           lat: null,
           lon: null,
           zipcode: null
@@ -83,7 +83,7 @@ class App extends Component {
         })
         .then((myJson) => {
           this.setState({
-            fiveDayWeatherData: myJson,
+            dailyWeatherData: myJson,
             lat: null,
             lon: null,
             zipcode: null
@@ -95,14 +95,14 @@ class App extends Component {
   }
 
   renderContent = () => {
-    const { weatherData, fiveDayWeatherData, zipcode, lat } = this.state;
+    const { weatherData, dailyWeatherData, zipcode, lat } = this.state;
 
     const hasLoadedWeather = weatherData.hasOwnProperty('name');
     const hasLocation = zipcode || lat;
     var currentTime = new Date().getHours();
     
     if (hasLoadedWeather) {
-      return DisplayCurrentWeather(weatherData, fiveDayWeatherData);
+      return CurrentWeather(weatherData, dailyWeatherData);
     } else if (hasLocation) {
       var conditionNumber = 0;
 
@@ -113,7 +113,7 @@ class App extends Component {
       }
       return <div id="loadingIcon">{ WeatherIcon(conditionNumber, currentTime) }</div>
     } else {
-      return <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />;
+      return <LocationRequest id="LocationRequest" getLocation = { this.getLocation } />;
     }
   }
 
