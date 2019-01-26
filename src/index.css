@@ -33,3 +33,9 @@ p#title {
 #enterLocation {
   text-align: center;
 }
+
+div#loadingIcon {
+  display: flex;
+  justify-content: center;
+  margin: 100px auto;
+}

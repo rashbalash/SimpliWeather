@@ -12,7 +12,7 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
 
     var fiveDayData = [];
     var daysConditions = [];
-    var todaysDate = new Date().getUTCDate();
+    var todaysDate = new Date().getDay();
     var listDate;
     var minTemp = 0;
     var maxTemp = 0;
@@ -20,9 +20,11 @@ function DisplayFiveDayWeather(fiveDayWeatherData) {
 
     for (var i = 0; i < list.length; i++) {
 
-        listDate = new Date(list[i].dt_txt).getUTCDate();
+        listDate = new Date(list[i].dt_txt).getDay();
 
-        if (todaysDate === listDate) continue;
+        if (todaysDate === listDate) {
+            continue;
+        }
 
         var newDay = 0;
         daysConditions = [];

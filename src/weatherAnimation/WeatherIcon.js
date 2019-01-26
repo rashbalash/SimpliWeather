@@ -1,4 +1,6 @@
 import React from 'react';
+import './WeatherIcon.css';
+
 import { ReactComponent as Cloudy } from './animated/cloudy.svg';
 import { ReactComponent as CloudyDay } from './animated/cloudyDay.svg';
 import { ReactComponent as CloudyNight } from './animated/cloudyNight.svg';
@@ -17,45 +19,45 @@ function WeatherIcon(condition, time) {
     var returnCondition;
 
     if (condition === 799) {
-        returnCondition = Night;
+        returnCondition = <Night className="iconSize" />;
 
     } else if (condition >= 200 && condition <= 232) {
-        returnCondition = Thunder;
+        returnCondition = <Thunder />;
 
     } else if (condition > 801 && condition <= 804) {
-        returnCondition = Cloudy;
+        returnCondition = <Cloudy />;
 
     } else if (condition === 801) {
+        
         if (time >= 6 && time <= 6) {
-            returnCondition = CloudyDay;
+            returnCondition = <CloudyDay />;
         } else {
-            returnCondition = CloudyNight;
+            returnCondition = <CloudyNight />;
         }
         
     } else if (condition >= 701 && condition <= 781) {
-        returnCondition = Cloudy;
+        returnCondition = <Cloudy />;
 
     } else if (condition === 600 || (condition >= 611 && condition <= 620)) {
-        returnCondition = LightSnow;
+        returnCondition = <LightSnow />;
 
     } else if (condition === 601 || condition === 602 || condition === 621 || condition === 622) {
-        returnCondition = HeavySnow;
+        returnCondition = <HeavySnow />;
 
     } else if (condition === 500 || condition === 501 || condition === 520 || condition === 531) {
-        returnCondition = RainySunny;
+        returnCondition = <RainySunny />;
 
     } else if ((condition >= 502 && condition <= 511) || condition === 521 || condition === 522) {
-        returnCondition = HeavyRain;
+        returnCondition = <HeavyRain />;
 
     } else {
-        returnCondition = Day;
+        returnCondition = <Day className="iconSize" />;
     }
 
-    console.log(returnCondition);
-    console.log(time); 
-
     return(
-        <Night />
+        <div>
+            { returnCondition }
+        </div>
     )
 }
 
