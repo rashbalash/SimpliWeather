@@ -28,7 +28,7 @@ function WeatherIcon(condition, time) {
 
     } else if (condition === 801) {
         
-        if (time >= 6 && time <= 6) {
+        if (time >= 6 && time <= 18) {
             returnCondition = <CloudyDay />;
         } else {
             returnCondition = <CloudyNight />;
@@ -50,7 +50,11 @@ function WeatherIcon(condition, time) {
         returnCondition = <HeavyRain />;
 
     } else {
-        returnCondition = <Day className="iconSize" />;
+        if (time > 6 && time <= 18) {
+            returnCondition = <Day />;
+        } else {
+            returnCondition = <Night />;
+        }
     }
 
     return(
