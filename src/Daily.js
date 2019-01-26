@@ -1,5 +1,6 @@
 import React from 'react';
 import './Daily.css';
+import WeatherIcon from './weatherAnimation/WeatherIcon';
 
 function Daily(dailyWeatherData) {
 
@@ -44,7 +45,7 @@ function Daily(dailyWeatherData) {
                 maxTemp = Math.round(list[i].main.temp_max);
             }
 
-            daysConditions.push(list[i].weather[0].main);
+            daysConditions.push(list[i].weather[0].id);
 
             i++;
             newDay++;
@@ -64,8 +65,8 @@ function Daily(dailyWeatherData) {
         dailyData.push(
             <div className = "dailyData">
                 <p className = "dayOfWeek">{ dayOfWeek }</p>
+                <div>{ WeatherIcon(condition, 12) }</div>
                 <p className = "dataValue">{ minTemp }&#176; | { maxTemp }&#176;</p>
-                <p className = "dataValue">{ condition }</p>
             </div>
         );
 

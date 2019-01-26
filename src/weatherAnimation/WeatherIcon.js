@@ -14,7 +14,9 @@ import { ReactComponent as Thunder } from './animated/thunder.svg';
 function WeatherIcon(condition, time) {
     
     // Series of if statements to select and display correct SVG
-    
+
+    condition = parseInt(condition);
+
     var returnCondition;
 
     if (condition === 799) {
@@ -28,7 +30,7 @@ function WeatherIcon(condition, time) {
 
     } else if (condition === 801) {
         
-        if (time >= 6 && time <= 18) {
+        if (time > 6 && time <= 18) {
             returnCondition = <CloudyDay />;
         } else {
             returnCondition = <CloudyNight />;

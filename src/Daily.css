@@ -18,6 +18,10 @@ p.dataValue {
     width: 60px;
 }
 
+p.dayOfWeek {
+    margin: 0;
+}
+
 @media screen and (max-width: 1100px) {
     div#dailyDataWrapper {
         width: 40%;
