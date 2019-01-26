@@ -15,6 +15,7 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
     var maxTemp = main.temp_max;
     var conditions = weather[0].main;
     var conditionNumber = weather[0].id;
+    var currentTime = new Date().getHours();
 
     // More About Today
     var humidity = main.humidity;
@@ -74,7 +75,7 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
 
             {/* Display Icon Based On Weather */}
             <div className="tempAndIcon">
-                { WeatherIcon(conditionNumber) }
+                { WeatherIcon(conditionNumber, currentTime) }
                 <p id="locationTemp">{ Math.round(mainTemp) }&#176;</p>
             </div>
             

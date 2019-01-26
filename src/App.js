@@ -99,11 +99,11 @@ class App extends Component {
 
     const hasLoadedWeather = weatherData.hasOwnProperty('name');
     const hasLocation = zipcode || lat;
+    var currentTime = new Date().getHours();
     
     if (hasLoadedWeather) {
       return DisplayCurrentWeather(weatherData, fiveDayWeatherData);
     } else if (hasLocation) {
-      var currentTime = new Date().getHours();
       var conditionNumber = 0;
 
       if (currentTime > 6 && currentTime < 6) {
@@ -111,7 +111,7 @@ class App extends Component {
       } else {
         conditionNumber = 799;
       }
-      return WeatherIcon(conditionNumber);
+      return WeatherIcon(conditionNumber, currentTime);
     } else {
       return <CurrentLocation id="currentLocation" getLocation = { this.getLocation } />;
     }
