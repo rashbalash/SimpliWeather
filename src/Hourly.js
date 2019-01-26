@@ -1,7 +1,7 @@
 import React from 'react';
-import './HourlyWeather.css';
+import './Hourly.css';
 
-function HourlyWeather(fiveDayWeatherData) {
+function Hourly(fiveDayWeatherData) {
 
     var { list } = fiveDayWeatherData;
 
@@ -42,4 +42,4 @@ function HourlyWeather(fiveDayWeatherData) {
     )
 }
 
-export default HourlyWeather;
+export default Hourly;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './DisplayCurrentWeather.css';
 import DisplayFiveDayWeather from './DisplayFiveDayWeather';
-import HourlyWeather from './HourlyWeather';
+import Hourly from './Hourly';
 import WeatherIcon from './weatherAnimation/WeatherIcon';
 
 function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
@@ -85,7 +85,7 @@ function DisplayCurrentWeather(weatherData, fiveDayWeatherData) {
             <h1 id="section">Hourly</h1>
             <br/>
             { fiveDayWeatherData.hasOwnProperty('city') ? 
-                HourlyWeather(fiveDayWeatherData) :
+                Hourly(fiveDayWeatherData) :
                 ""
             }
 

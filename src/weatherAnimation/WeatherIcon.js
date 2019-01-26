@@ -1,5 +1,4 @@
 import React from 'react';
-import './WeatherIcon.css';
 
 import { ReactComponent as Cloudy } from './animated/cloudy.svg';
 import { ReactComponent as CloudyDay } from './animated/cloudyDay.svg';
@@ -19,7 +18,7 @@ function WeatherIcon(condition, time) {
     var returnCondition;
 
     if (condition === 799) {
-        returnCondition = <Night className="iconSize" />;
+        returnCondition = <Night />;
 
     } else if (condition >= 200 && condition <= 232) {
         returnCondition = <Thunder />;

@@ -28,6 +28,10 @@ p#locationTemp {
     margin: 0;
 }
 
+#weatherIcon {
+    margin: auto 0;
+}
+
 @media screen and (max-width: 300px) {
     p#locationTemp {
         font-size: 54px;
