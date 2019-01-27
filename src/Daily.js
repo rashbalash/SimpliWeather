@@ -32,7 +32,7 @@ function Daily(dailyWeatherData) {
         minTemp = Math.round(list[i].main.temp_min);
         maxTemp = Math.round(list[i].main.temp_max);
 
-        timeRaw = new Date(list[i].dt_txt);
+        timeRaw = new Date(list[i].dt_txt.replace(/-/g, "/"));
         dayOfWeek = week[timeRaw.getDay()];    
 
         while (newDay < 8) {

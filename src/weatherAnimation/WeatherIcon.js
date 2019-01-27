@@ -65,17 +65,11 @@ function WeatherIcon(condition, time, iconSize) {
     if (checkDefinition !== undefined && iconSize === 2) {
         checkDefinition.removeAttribute("width");
         checkDefinition.removeAttribute("height");
-        checkDefinition.setAttribute("width", "120px");
+        checkDefinition.setAttribute("width", "135px");
         checkDefinition.setAttribute("height", "120px");
         checkDefinition.removeAttribute("viewBox");
-        checkDefinition.setAttribute("viewBox", "13 10 40 40");
+        checkDefinition.setAttribute("viewBox", "13 12 41 41");
     }
-    
-
-
-    // if (iconSize === 3) {
-    //     // document.getElementsByTagName("svg").style.height = "200px";
-
 
     return(
         <div>

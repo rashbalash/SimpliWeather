@@ -16,9 +16,9 @@ function Hourly(dailyWeatherData) {
     for (var i = 0; i < 9; i++) {
         temp = Math.round(list[i].main.temp);
         condition = list[i].weather[0].id;
-        timeRaw = new Date(list[i].dt_txt).toLocaleTimeString();
-        UTCtime = new Date(list[i].dt_txt).getHours();        
-        
+        timeRaw = new Date(list[i].dt_txt.replace(/-/g, "/")).toLocaleTimeString();
+        UTCtime = new Date(list[i].dt_txt.replace(/-/g, "/")).getHours();
+
         if (timeRaw.length === 10) {
             // remove indexes 4,5,6
             time = timeRaw.slice(0,4);

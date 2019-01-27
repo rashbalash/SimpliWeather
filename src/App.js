@@ -38,7 +38,7 @@ class App extends Component {
 
   getCurrentWeather = () => {
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
           return response.json();
         })
@@ -48,7 +48,7 @@ class App extends Component {
           });
         });
     } else if (this.state.zipcode != null & this.state.zipcode !== "null") {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
           return response.json();
         })
@@ -64,7 +64,7 @@ class App extends Component {
 
   getDailyWeather = () => {
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${ this.state.lat }&lon=${ this.state.lon }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${ this.state.lat }&lon=${ this.state.lon }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
         return response.json();
       })
@@ -77,7 +77,7 @@ class App extends Component {
         });
       });
     } else if (this.state.zipcode != null & this.state.zipcode !== "null") {
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${ this.state.zipcode },${ "US" }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${ this.state.zipcode },${ "US" }&units=imperial&appid=41aae642caeac8c0932d9726aad914cd`)
         .then((response) => {
           return response.json();
         })
