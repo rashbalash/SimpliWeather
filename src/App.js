@@ -111,7 +111,7 @@ class App extends Component {
       } else {
         conditionNumber = 799;
       }
-      return <div id="loadingIcon">{ WeatherIcon(conditionNumber, currentTime) }</div>
+      return <div id="loadingIcon">{ WeatherIcon(conditionNumber, currentTime, 3) }</div>
     } else {
       return <LocationRequest id="LocationRequest" getLocation = { this.getLocation } />;
     }

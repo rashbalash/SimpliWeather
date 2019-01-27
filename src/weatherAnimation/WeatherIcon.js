@@ -12,7 +12,7 @@ import { ReactComponent as Night } from './animated/night.svg';
 import { ReactComponent as RainySunny } from './animated/rainySunny.svg';
 import { ReactComponent as Thunder } from './animated/thunder.svg';
 
-function WeatherIcon(condition, time) {
+function WeatherIcon(condition, time, iconSize) {
     
     // Series of if statements to select and display correct SVG
 
@@ -59,6 +59,23 @@ function WeatherIcon(condition, time) {
             returnCondition = <Night />;
         }
     }
+
+    var checkDefinition = document.getElementsByTagName("svg")[0];
+
+    if (checkDefinition !== undefined && iconSize === 2) {
+        checkDefinition.removeAttribute("width");
+        checkDefinition.removeAttribute("height");
+        checkDefinition.setAttribute("width", "120px");
+        checkDefinition.setAttribute("height", "120px");
+        checkDefinition.removeAttribute("viewBox");
+        checkDefinition.setAttribute("viewBox", "13 10 40 40");
+    }
+    
+
+
+    // if (iconSize === 3) {
+    //     // document.getElementsByTagName("svg").style.height = "200px";
+
 
     return(
         <div>

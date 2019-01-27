@@ -34,7 +34,7 @@ p#locationTemp {
 
 @media screen and (max-width: 300px) {
     p#locationTemp {
-        font-size: 54px;
+        font-size: 64px;
     }
 }
 

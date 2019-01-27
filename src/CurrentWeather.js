@@ -75,7 +75,7 @@ function CurrentWeather(weatherData, dailyWeatherData) {
 
             {/* Display Icon Based On Weather */}
             <div className="tempAndIcon">
-                <div id="weatherIcon">{ WeatherIcon(conditionNumber, currentTime) }</div>
+                <div id="weatherIcon">{ WeatherIcon(conditionNumber, currentTime, 2) }</div>
                 <p id="locationTemp">{ Math.round(mainTemp) }&#176;</p>
             </div>
             
