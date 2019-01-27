@@ -32,12 +32,6 @@ p#locationTemp {
     margin: auto 0;
 }
 
-@media screen and (max-width: 300px) {
-    p#locationTemp {
-        font-size: 64px;
-    }
-}
-
 h1#section {
     width: 28%;
     text-align: left;
