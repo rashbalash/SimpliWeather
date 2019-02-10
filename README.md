@@ -1,6 +1,6 @@
 # SimpliWeather
 Version: 1.0.0
-
+Date: February 9th, 2018
 Description: SimpliWeather.com Launch!
 
 Welcome to SimpliWeather, this is a simple React Web Application built for users to check the weather.
