@@ -100,7 +100,7 @@ function CurrentWeather(weatherData, dailyWeatherData) {
             <br/>
             <div id="sectionWrapper">
                 <div id="matLeft">
-                    <p id="matTitle">Precipication</p>       
+                    <p id="matTitle">Precipitation</p>       
                     <p id="matValue">{ rainPrecipitation } Inches</p> 
                 </div>
                 
