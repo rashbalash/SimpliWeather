@@ -63,7 +63,7 @@ function Daily(dailyWeatherData) {
         condition = Object.keys(averageCondition)[0];
         
         dailyData.push(
-            <div className = "dailyData">
+            <div key={ i } className = "dailyData">
                 <p className = "dayOfWeek">{ dayOfWeek }</p>
                 <div>{ WeatherIcon(condition, 12) }</div>
                 <p className = "dataValue">{ minTemp }&#176; | { maxTemp }&#176;</p>

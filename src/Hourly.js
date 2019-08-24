@@ -28,7 +28,7 @@ function Hourly(dailyWeatherData) {
         }
         
         hourlyData.push(
-            <div className = "dataWrapper">
+            <div key={ i } className = "dataWrapper">
                 <p className="dataValue">{ time }</p>
                 <div>{ WeatherIcon(condition, UTCtime) }</div>
                 <p className = "dataValue">{ temp }&#176;</p>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LocationRequest from './LocationRequest';
 import CurrentWeather from './CurrentWeather';
 import WeatherIcon from './weatherAnimation/WeatherIcon';
+import Footer from './Footer';
 import { weatherApiKey } from './ApiKeys';
 
 class App extends Component {
@@ -122,10 +123,12 @@ class App extends Component {
     return (
       <div id="container" className="App">
         <header id="mainHeader">
-          <p id="title">Weather</p>
+          <p id="title">SimpliWeather</p>
         </header>
 
         { this.renderContent() }
+
+        <Footer />
 
       </div>
     );

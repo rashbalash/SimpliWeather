@@ -65,10 +65,10 @@ function WeatherIcon(condition, time, iconSize) {
     if (checkDefinition !== undefined && iconSize === 2) {
         checkDefinition.removeAttribute("width");
         checkDefinition.removeAttribute("height");
-        checkDefinition.setAttribute("width", "135px");
+        checkDefinition.setAttribute("width", "150px");
         checkDefinition.setAttribute("height", "120px");
         checkDefinition.removeAttribute("viewBox");
-        checkDefinition.setAttribute("viewBox", "13 12 41 41");
+        checkDefinition.setAttribute("viewBox", "13 12 35 41");
     }
 
     return(

@@ -70,7 +70,7 @@ function CurrentWeather(weatherData, dailyWeatherData) {
     }
 
     return(
-        <div id="currentWeatherCointainer">
+        <div id="currentWeatherContainer">
             <p id="locationName">{ name }, { country }</p>
 
             {/* Display Icon Based On Weather */}
@@ -131,6 +131,7 @@ function CurrentWeather(weatherData, dailyWeatherData) {
             </div>
             
             <br/>
+
             <button id="clearData" onClick= { handleClear }>Clear Your Data</button>
 
         </div>
