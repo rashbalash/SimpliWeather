@@ -127,10 +127,10 @@ function CurrentWeather(weatherData, dailyWeatherData) {
                         </div>                
                     </div>
                 </div>
+            
+                <button id="clearData" onClick= { handleClear }>Clear Your Data</button>
+
             </div>
-
-            {/* <button id="clearData" onClick= { handleClear }>Clear Your Data</button> */}
-
         </div>
     )
 } 

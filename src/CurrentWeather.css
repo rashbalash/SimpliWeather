@@ -80,3 +80,8 @@ h1#section {
 h1#MATSection {
     margin-bottom: 10px;
 }
+
+button#clearData {
+    width: 300px;
+    margin: auto;
+}
