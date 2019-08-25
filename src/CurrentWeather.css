@@ -3,7 +3,7 @@ div#currentWeatherContainer {
     margin: auto;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: flex-start;
 }
 
@@ -19,6 +19,8 @@ div#hourlyAndDailyTemperatureContainer {
 
 div#MATContainer {
     align-self: flex-start;
+    width: 325px;
+    max-width: 95%;
 }
 
 p#locationName {
@@ -57,9 +59,24 @@ p#locationTemp {
     font-size: 20px;
     text-decoration: underline;
     text-align: center;
+    margin-top: 0px;
 }
 
 #matValue {
     font-size: 18px;
     text-align: center;
+    margin-bottom: 48px;
+}
+
+div#sectionWrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1#section {
+    margin-bottom: 15px;
+}
+
+h1#MATSection {
+    margin-bottom: 10px;
 }

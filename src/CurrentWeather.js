@@ -102,43 +102,35 @@ function CurrentWeather(weatherData, dailyWeatherData) {
                 </div>
 
                 <div id="MATContainer">
-                    <h1 id="section">More About Today</h1>
+                    <h1 id="MATSection">More About Today</h1>
                     <div id="sectionWrapper">
                         <div id="matLeft">
                             <p id="matTitle">Precipitation</p>       
                             <p id="matValue">{ rainPrecipitation } Inches</p> 
-                        </div>
-                        
-                        <div id="matRight">
-                            <p id="matTitle">Humidity</p>
-                            <p id="matValue">{ humidity }%</p>
-                        </div>
-                        
-                        <div id="matLeft">
+
                             <p id="matTitle">Sunrise</p>
                             <p id="matValue">{ sunrise }</p>
-                        </div>
-                        
-                        <div id="matRight">
-                            <p id="matTitle">Sunset</p>
-                            <p id="matValue">{ sunset }</p>
-                        </div>
-                        
-                        <div id="matLeft">
+
                             <p id="matTitle">Wind</p>
                             <p id="matValue">{ Math.round(windSpeed) } mph { windDirection }</p>
                         </div>
                         
                         <div id="matRight">
+                            <p id="matTitle">Humidity</p>
+                            <p id="matValue">{ humidity }%</p>
+
+                            <p id="matTitle">Sunset</p>
+                            <p id="matValue">{ sunset }</p>
+
                             <p id="matTitle">Pressure</p>
                             <p id="matValue">{ pressure } hPa</p>
                         </div>                
                     </div>
                 </div>
-
-                {/* <button id="clearData" onClick= { handleClear }>Clear Your Data</button> */}
-
             </div>
+
+            {/* <button id="clearData" onClick= { handleClear }>Clear Your Data</button> */}
+
         </div>
     )
 } 
