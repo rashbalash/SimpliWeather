@@ -1,5 +1,24 @@
 div#currentWeatherContainer {
-    text-align: center;
+    max-width: 95%;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+div#currentTemperatureContainer {
+    align-self: center;
+}
+
+div#hourlyAndDailyTemperatureContainer {
+    width: 675px;
+    max-width: 95%;
+    align-self: flex-start;
+}
+
+div#MATContainer {
+    align-self: flex-start;
 }
 
 p#locationName {
@@ -34,33 +53,6 @@ p#locationTemp {
     margin: auto 0;
 }
 
-h1#section {
-    width: 28%;
-    text-align: left;
-    display: inline-block;
-}
-
-div#sectionWrapper {
-    width: 27%;
-    display: inline-flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-}
-
-div#matLeft {
-    float: left;
-    flex: 1 0 40%;
-    margin-right: 5px;
-    text-align: center;
-}
-
-div#matRight {
-    float: right;
-    flex: 1 0 40%;
-    margin-left: 5px;
-    text-align: center;
-}
-
 #matTitle {
     font-size: 20px;
     text-decoration: underline;
@@ -70,40 +62,4 @@ div#matRight {
 #matValue {
     font-size: 18px;
     text-align: center;
-}
-
-@media screen and (max-width: 1100px) {
-    h1#section {
-        width: 40%;
-    }
-    div#sectionWrapper {
-        width: 40%;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    h1#section {
-        width: 55%;
-    }
-    div#sectionWrapper {
-        width: 55%;
-    }
-}
-
-@media screen and (max-width: 550px) {
-    h1#section {
-        width: 70%;
-    }
-    div#sectionWrapper {
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 404px) {
-    h1#section {
-        width: 80%;
-    }
-    div#sectionWrapper {
-        width: 80%;
-    }
 }

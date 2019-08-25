@@ -2,7 +2,6 @@ div#dailyDataWrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    width: 26%;
     margin: auto;
     overflow: auto;
 }
@@ -20,28 +19,4 @@ p.dataValue {
 
 p.dayOfWeek {
     margin: 0;
-}
-
-@media screen and (max-width: 1100px) {
-    div#dailyDataWrapper {
-        width: 40%;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    div#dailyDataWrapper {
-        width: 55%;
-    }
-}
-
-@media screen and (max-width: 550px) {
-    div#dailyDataWrapper {
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 404px) {
-    div#dailyDataWrapper {
-        width: 80%;
-    }
 }
