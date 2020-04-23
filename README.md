@@ -1,4 +1,20 @@
 # SimpliWeather
+
+Version: 1.0.1
+
+Date: April 22nd, 2020
+
+Description: Settings Update
+
+  - Night Mode Toggle | Work In Progress
+  - F/C Toggle | Enabled
+  - Other Location Search | Work In Progress
+  - Clear LocalStorage | Enabled
+  - --Location Update Button--
+
+
+--------------------------------------------------------------------------------------
+
 Version: 1.0.0
 
 Date: February 9th, 2018 
