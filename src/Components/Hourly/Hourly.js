@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hourly.css';
-import WeatherIcon from './weatherAnimation/WeatherIcon';
+import WeatherIcon from '../../weatherAnimation/WeatherIcon';
 
 function Hourly(dailyWeatherData) {
 

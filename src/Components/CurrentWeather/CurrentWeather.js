@@ -1,10 +1,11 @@
 import React from 'react';
 import './CurrentWeather.css';
-import Daily from './Daily';
-import Hourly from './Hourly';
-import WeatherIcon from './weatherAnimation/WeatherIcon';
+import Daily from '../Daily/Daily';
+import Hourly from '../Hourly/Hourly';
+import WeatherIcon from '../../weatherAnimation/WeatherIcon';
+import Settings from '../Settings/Settings';
 
-function CurrentWeather(weatherData, dailyWeatherData) {
+function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScaleChange) {
 
     var { name, sys, main, weather, wind } = weatherData;
     
@@ -64,11 +65,6 @@ function CurrentWeather(weatherData, dailyWeatherData) {
         sunset += sunsetTime.slice(8);
     }
 
-    function handleClear(e) {
-        localStorage.clear();
-        window.location.reload();
-    }
-
     return(
         <div>
             <p id="locationName">{ name }, { country }</p>
@@ -84,7 +80,7 @@ function CurrentWeather(weatherData, dailyWeatherData) {
                         <p id="locationTemp">{ Math.round(mainTemp) }&#176;</p>
                     </div>
                     
-                    <p id="minAndMaxTemp">{ conditions } | { Math.round(minTemp) }&#176; | { Math.round(maxTemp) }&#176;</p>
+                    <p id="minAndMaxTemp">{ conditions } | { Math.round(maxTemp) }&#176; | { Math.round(minTemp) }&#176; </p>
                 </div>  
 
                 <div id="hourlyAndDailyTemperatureContainer">
@@ -128,7 +124,9 @@ function CurrentWeather(weatherData, dailyWeatherData) {
                     </div>
                 </div>
             
-                <button id="clearData" onClick= { handleClear }>Clear Your Data</button>
+                <div className="break"></div>
+                
+                <Settings id="settingsButtons" tempScale={ tempScale } handleTempScaleChange = {handleTempScaleChange}/>
 
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Daily.css';
-import WeatherIcon from './weatherAnimation/WeatherIcon';
+import WeatherIcon from '../../weatherAnimation/WeatherIcon';
 
 function Daily(dailyWeatherData) {
 
@@ -66,7 +66,7 @@ function Daily(dailyWeatherData) {
             <div key={ i } className = "dailyData">
                 <p className = "dayOfWeek">{ dayOfWeek }</p>
                 <div>{ WeatherIcon(condition, 12) }</div>
-                <p className = "dataValue">{ minTemp }&#176; | { maxTemp }&#176;</p>
+                <p className = "dataValue">{ maxTemp }&#176; | { minTemp }&#176;</p>
             </div>
         );
 

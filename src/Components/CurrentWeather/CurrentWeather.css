@@ -1,5 +1,5 @@
 div#currentWeatherContainer {
-    max-width: 95%;
+    max-width: 1600px;
     margin: auto;
     display: flex;
     flex-flow: row wrap;
@@ -81,7 +81,11 @@ h1#MATSection {
     margin-bottom: 10px;
 }
 
-button#clearData {
+#settingsButtons {
     width: 300px;
     margin: auto;
+}
+
+.break {
+    width: 100%;
 }

@@ -1,0 +1,22 @@
+button {
+    background-color: white;
+    border: none;
+}
+
+.svgIcon {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: ease 0.5s;
+    margin: 0 5px 0 5px;
+}
+
+.svgIcon:hover {
+    background-color: pink;
+    transition: ease 0.5s;
+}
+
+button:focus {
+    outline: none !important;
+}

@@ -7,7 +7,8 @@ class LocationRequest extends Component {
     state = {
         zipcode: null,
         lat: null,
-        lon: null
+        lon: null,
+        tempScale: "imperial",
     }
     
     handleSubmit = (e) => {
