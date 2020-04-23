@@ -10,8 +10,7 @@ Description: Settings Update
   - F/C Toggle | Enabled
   - Other Location Search | Work In Progress
   - Clear LocalStorage | Enabled
-  - --Location Update Button--
-
+  - About Page | Work In Progress
 
 --------------------------------------------------------------------------------------
 
