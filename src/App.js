@@ -129,49 +129,11 @@ class App extends Component {
     }
   }
 
-  // handleLocationUpdate = (e) => {
-  //   e.preventDefault();
-  //   navigator.geolocation.getCurrentPosition(this.success, this.error, this.options);
-  // }
-
-  
-  // options = {
-  //   enableHighAccuracy: true,
-  //   timeout: 10000,
-  // }
-
-  // success = (pos) => {
-  //   var currentCoords = pos.coords;
-    
-
-  //   this.setState({
-  //     lat: currentCoords.latitude,
-  //     lon: currentCoords.longitude,
-  //     validEntry: true
-  //   })
-
-  //   this.getLocation(this.state);
-  // }
-
-  // error = (err) => {
-  //   console.warn(`ERROR(${err.code}): ${err.message}`);
-  // }
-
-  // handleDarkMode = () => {
-    
-    
-  //   return (
-
-  //   )
-  // }
-
   render() {
     return (
       <div id="container" className="App">
         <header id="mainHeader">
-          {/* { localStorage.length === 0 && this.state.validEntry !== true ? null : <p>hi</p> } */}
           <p id="title">SimpliWeather</p>
-          {/* { localStorage.length === 0 && this.state.validEntry !== true ? null : <form onSubmit={ this.handleLocationUpdate }><button>hi</button></form> } */}
         </header>
 
         { this.renderContent() }

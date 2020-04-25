@@ -5,6 +5,15 @@ import Hourly from '../Hourly/Hourly';
 import WeatherIcon from '../../weatherAnimation/WeatherIcon';
 import Settings from '../Settings/Settings';
 
+
+function windUnits(windSpeed, windDirection, tempScale) {
+    if (tempScale === "imperial") {
+        return <p id="matValue">{ Math.round(windSpeed) } mph { windDirection }</p>
+    } else {
+        return <p id="matValue">{ Math.round(windSpeed) } kmh { windDirection }</p>
+    }
+  }
+
 function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScaleChange) {
 
     var { name, sys, main, weather, wind } = weatherData;
@@ -95,9 +104,7 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
                         Daily(dailyWeatherData) :
                         ""
                     }
-                </div>
-
-                <div id="MATContainer">
+                
                     <h1 id="MATSection">More About Today</h1>
                     <div id="sectionWrapper">
                         <div id="matLeft">
@@ -108,7 +115,7 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
                             <p id="matValue">{ sunrise }</p>
 
                             <p id="matTitle">Wind</p>
-                            <p id="matValue">{ Math.round(windSpeed) } mph { windDirection }</p>
+                            { windUnits(windSpeed, windDirection, tempScale) }
                         </div>
                         
                         <div id="matRight">
