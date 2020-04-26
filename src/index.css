@@ -15,8 +15,9 @@ p#title {
   text-align: center;
   font-size: 54px;
   font-weight: 400;
-  margin: 25px auto;
+  margin: auto;
   margin-bottom: 0px;
+  padding-top: 25px;
 }
 
 @media all and (max-width: 415px) {

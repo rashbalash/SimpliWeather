@@ -1,20 +1,35 @@
+#settingsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 button {
-    background-color: white;
     border: none;
 }
 
-.svgIcon {
+.light-button {
     background-color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: ease 0.5s;
-    margin: 0 5px 0 5px;
+    color: black;
+}
+
+.dark-button {
+    background-color: #101010;
+    color: white;
+}
+
+.dark-button > svg {
+    fill: white;    
+}
+
+.light-button > svg {
+    fill: black;
 }
 
 .svgIcon:hover {
     background-color: pink;
     transition: ease 0.5s;
+    border-radius: 50%;
 }
 
 button:focus {

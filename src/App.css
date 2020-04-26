@@ -1,0 +1,13 @@
+.light-body {
+    background-color: white;
+    color: black;
+}
+
+.dark-body {
+    background-color: #101010;
+    color: white;
+}
+
+#container {
+    min-height: 100vh;
+}

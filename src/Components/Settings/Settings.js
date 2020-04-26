@@ -4,7 +4,8 @@ import './Settings.css';
 import { ReactComponent as Imperial } from './settingIcons/fahrenheit.svg';
 import { ReactComponent as Metric } from './settingIcons/celsius.svg';
 import { ReactComponent as About } from './settingIcons/about.svg';
-import { ReactComponent as Mode } from './settingIcons/darkorlight.svg';
+import { ReactComponent as Dark } from './settingIcons/dark.svg';
+import { ReactComponent as Light } from './settingIcons/light.svg';
 import { ReactComponent as Search } from './settingIcons/search.svg';
 import { ReactComponent as Trash } from './settingIcons/trash.svg';
 
@@ -12,7 +13,9 @@ class Settings extends Component {
 
 
     handleClear = (e) => {
+        var saveMode = localStorage.getItem("mode");
         localStorage.clear();
+        localStorage.setItem("mode", saveMode);
         window.location.reload();
     }
 
@@ -25,23 +28,38 @@ class Settings extends Component {
         }
     }
 
+    getModeIcon = () => {
+        if (this.props.mode === "light") {
+            return <Light className="svgIcon" />
+        } else {
+            return <Dark className="svgIcon" />
+        }
+    }
+
+    handleModeChange = (e) => {
+        this.props.handleMode();
+    }
+
     render() {
+
+        var buttonClassName = this.props.mode === "light" ? "light-button": "dark-button";
+
         return (
-            <div>
+            <div id="settingsWrapper">
                 {/* Add | Search */}
-                <button><Search className="svgIcon" /></button>
+                <button className={ buttonClassName } ><Search className="svgIcon" /></button>
 
                 {/* Celsius | Fahrenheit */}
-                <button onClick= { this.props.handleTempScaleChange }>{ this.getScaleIcon() }</button>
+                <button className={ buttonClassName } onClick= { this.props.handleTempScaleChange }>{ this.getScaleIcon() }</button>
                 
                 {/* Dark Mode | Light Mode */}
-                <button onClick= { this.handleMode }> <Mode className="svgIcon" /> </button>
+                <button className={ buttonClassName } onClick= { this.handleModeChange }>{ this.getModeIcon() }</button>
 
                 {/* Clear Data */}
-                <button onClick= { this.handleClear }> <Trash className="svgIcon" /> </button>
+                <button className={ buttonClassName } onClick= { this.handleClear }> <Trash className="svgIcon" /> </button>
 
                 {/* About */}
-                <button><About className="svgIcon" /></button>
+                <button className={ buttonClassName }><About className="svgIcon" /></button>
             </div>
         )
     }

@@ -14,7 +14,16 @@ function windUnits(windSpeed, windDirection, tempScale) {
     }
   }
 
-function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScaleChange) {
+function rainUnits(rainPrecipitation, tempScale) {
+
+    if (tempScale === "imperial") {
+        return <p id="matValue">{ rainPrecipitation } Inches</p> 
+    } else {
+        return <p id="matValue">{ rainPrecipitation } Centimeters</p> 
+    }
+}
+
+function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScaleChange, handleMode, mode) {
 
     var { name, sys, main, weather, wind } = weatherData;
     
@@ -112,7 +121,7 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
                         <div id="sectionWrapper">
                             <div id="matLeft">
                                 <p id="matTitle">Precipitation</p>       
-                                <p id="matValue">{ rainPrecipitation } Inches</p> 
+                                { rainUnits(rainPrecipitation, tempScale) }
 
                                 <p id="matTitle">Sunrise</p>
                                 <p id="matValue">{ sunrise }</p>
@@ -137,7 +146,7 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
             
                 <div className="break"></div>
                 
-                <Settings id="settingsButtons" tempScale={ tempScale } handleTempScaleChange = {handleTempScaleChange}/>
+                <Settings id="settingsButtons" tempScale={ tempScale } handleTempScaleChange = { handleTempScaleChange } handleMode = { handleMode } mode= { mode } />
 
             </div>
         </div>

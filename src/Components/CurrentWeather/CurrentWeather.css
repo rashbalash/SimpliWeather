@@ -10,6 +10,7 @@ div#currentWeatherContainer {
 div#currentTemperatureContainer {
     align-self: center;
     flex: 1;
+    max-width: 466px;
 }
 
 div#hourlyAndDailyTemperatureContainer {
@@ -34,7 +35,7 @@ div#MATContainer {
 
 @media all and (max-width: 1591px) {
     div#MATContainer {
-        width: 675px;
+        width: 666px;
         margin: unset;
     }
 }

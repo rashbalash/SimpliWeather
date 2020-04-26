@@ -4,6 +4,7 @@ import CurrentWeather from './Components/CurrentWeather/CurrentWeather';
 import WeatherIcon from './weatherAnimation/WeatherIcon';
 import Footer from './Components/Footer/Footer';
 import { weatherApiKey } from './ApiKeys';
+import './App.css';
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
       weatherData: {},
       dailyWeatherData: {},
       tempScale: localStorage.getItem("tempScale"),
+      mode: localStorage.getItem("mode"),
     };
     this.getCurrentWeather();
     this.getDailyWeather();
@@ -34,6 +36,7 @@ class App extends Component {
         localStorage.setItem("lat", this.state.lat);
         localStorage.setItem("lon", this.state.lon);
         localStorage.setItem("tempScale", this.state.tempScale);
+        localStorage.setItem("mode", this.state.mode);
       }
       this.getCurrentWeather();
       this.getDailyWeather();
@@ -67,6 +70,7 @@ class App extends Component {
   }
 
   getDailyWeather = () => {
+
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
       fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${ this.state.lat }&lon=${ this.state.lon }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
         .then((response) => {
@@ -93,7 +97,12 @@ class App extends Component {
   }
 
   handleMode = (e) => {
-    console.log("change background color");
+    
+    const newMode = this.state.mode === "dark" ? "light" : "dark";
+    this.setState({ mode: newMode },
+      () => {
+        localStorage.setItem("mode", newMode);
+      })
   }
 
   handleTempScaleChange = (e) => {
@@ -107,14 +116,14 @@ class App extends Component {
   }
 
   renderContent = () => {
-    const { weatherData, dailyWeatherData, zipcode, lat, tempScale } = this.state;
+    const { weatherData, dailyWeatherData, zipcode, lat, tempScale, mode } = this.state;
 
     const hasLoadedWeather = weatherData.hasOwnProperty('name');
     const hasLocation = zipcode || lat;
     var currentTime = new Date().getHours();
     
     if (hasLoadedWeather) {
-      return CurrentWeather(weatherData, dailyWeatherData, tempScale, this.handleTempScaleChange);
+      return CurrentWeather(weatherData, dailyWeatherData, tempScale, this.handleTempScaleChange, this.handleMode, mode);
     } else if (hasLocation) {
       var conditionNumber = 0;
 
@@ -130,8 +139,11 @@ class App extends Component {
   }
 
   render() {
+
+    var bodyClassName = this.state.mode === "light" ? "light-body": "dark-body";
+    
     return (
-      <div id="container" className="App">
+      <div id="container" className={["App", bodyClassName].join(' ')}>
         <header id="mainHeader">
           <p id="title">SimpliWeather</p>
         </header>
