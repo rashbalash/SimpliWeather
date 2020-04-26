@@ -9,18 +9,34 @@ div#currentWeatherContainer {
 
 div#currentTemperatureContainer {
     align-self: center;
+    flex: 1;
 }
 
 div#hourlyAndDailyTemperatureContainer {
     width: 675px;
     max-width: 95%;
     align-self: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 2;
+    justify-content: center;
+}
+
+div#hourlyDailyWrapper {
+    max-width: 100%;
 }
 
 div#MATContainer {
-    align-self: flex-start;
-    width: 325px;
-    max-width: 95%;
+    align-self: flex-end;
+    width: 375px;
+    margin: auto auto auto 20px;
+}
+
+@media all and (max-width: 1591px) {
+    div#MATContainer {
+        width: 675px;
+        margin: unset;
+    }
 }
 
 p#locationName {

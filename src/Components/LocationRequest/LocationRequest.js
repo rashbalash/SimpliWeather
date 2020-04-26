@@ -58,7 +58,7 @@ class LocationRequest extends Component {
         return(
             <div className="formContainer">
                 <div className="form">
-                    <p id="mainContext">Click The Icon Below To Allow This Application To Access Your Location!</p>
+                    <p id="mainContext">Click The Icon Below To Allow<br />SimpliWeather To Access Your Location!</p>
                     <form id="LocationRequest" onSubmit= { this.handleRequest }>
                         <br/>
                         <button className="btn"><FaLocationArrow id="locationIcon"/></button>
@@ -70,6 +70,7 @@ class LocationRequest extends Component {
                         <br/>
                         <button id="submitBtn">Submit</button>
                     </form>
+                    <p id="subContext">(SimpliWeather does not store your data anywhere except for on your device, which you can delete by clicking on the trash can icon at the bottom of the page)</p>
                 </div>
             </div>
         )

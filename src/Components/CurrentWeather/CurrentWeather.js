@@ -93,41 +93,45 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
                 </div>  
 
                 <div id="hourlyAndDailyTemperatureContainer">
+                    <div id="hourlyDailyWrapper">
                     <h1 id="section">Hourly</h1>
                     { dailyWeatherData.hasOwnProperty('city') ? 
                         Hourly(dailyWeatherData) :
                         ""
                     }
-            
+
                     <h1 id="section">Daily</h1>
                     { dailyWeatherData.hasOwnProperty('city') ? 
                         Daily(dailyWeatherData) :
                         ""
                     }
-                
-                    <h1 id="MATSection">More About Today</h1>
-                    <div id="sectionWrapper">
-                        <div id="matLeft">
-                            <p id="matTitle">Precipitation</p>       
-                            <p id="matValue">{ rainPrecipitation } Inches</p> 
+                    </div>
 
-                            <p id="matTitle">Sunrise</p>
-                            <p id="matValue">{ sunrise }</p>
+                    <div id="MATContainer">
+                        <h1 id="MATSection">More About Today</h1>
+                        <div id="sectionWrapper">
+                            <div id="matLeft">
+                                <p id="matTitle">Precipitation</p>       
+                                <p id="matValue">{ rainPrecipitation } Inches</p> 
 
-                            <p id="matTitle">Wind</p>
-                            { windUnits(windSpeed, windDirection, tempScale) }
+                                <p id="matTitle">Sunrise</p>
+                                <p id="matValue">{ sunrise }</p>
+
+                                <p id="matTitle">Wind</p>
+                                { windUnits(windSpeed, windDirection, tempScale) }
+                            </div>
+                            
+                            <div id="matRight">
+                                <p id="matTitle">Humidity</p>
+                                <p id="matValue">{ humidity }%</p>
+
+                                <p id="matTitle">Sunset</p>
+                                <p id="matValue">{ sunset }</p>
+
+                                <p id="matTitle">Pressure</p>
+                                <p id="matValue">{ pressure } hPa</p>
+                            </div>                
                         </div>
-                        
-                        <div id="matRight">
-                            <p id="matTitle">Humidity</p>
-                            <p id="matValue">{ humidity }%</p>
-
-                            <p id="matTitle">Sunset</p>
-                            <p id="matValue">{ sunset }</p>
-
-                            <p id="matTitle">Pressure</p>
-                            <p id="matValue">{ pressure } hPa</p>
-                        </div>                
                     </div>
                 </div>
             

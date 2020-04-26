@@ -27,10 +27,18 @@ button.btn:hover {
 
 p#mainContext {
     text-align: center;
-    margin-bottom: 0px;
     font-size: 24px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin: 10px auto;
+    width: 400px;
+    max-width: 95%;
+}
+
+p#subContext {
+    text-align: center;
+    margin: 20px auto;
+    width: 400px;
+    max-width: 95%;
+    font-size: 18px;
 }
 
 input#zipcode {
