@@ -1,5 +1,19 @@
 # SimpliWeather
 
+Version: 2.0.0
+
+Date: May 2nd, 2020
+
+Updates
+
+  - Night Mode Toggle | Complete
+  - F/C Toggle | Complete
+  - Other Location Search | Removed
+  - Clear LocalStorage | Complete
+  - About Page | Complete
+
+--------------------------------------------------------------------------------------
+
 Version: 1.0.1
 
 Date: April 22nd, 2020
