@@ -13,6 +13,7 @@ class App extends Component {
 
     this.state = {
       zipcode: localStorage.getItem("zipcode"), 
+      city: localStorage.getItem("city"),
       lat: localStorage.getItem("lat"), 
       lon: localStorage.getItem("lon"),
       weatherData: {},
@@ -27,12 +28,14 @@ class App extends Component {
   getLocation = (location) => {
     this.setState({
       zipcode: location.zipcode,
+      city: location.city,
       lat: location.lat,
       lon: location.lon,
       tempScale: "imperial",
     }, () => {
       if (typeof(Storage) !== "undefined") {
         localStorage.setItem("zipcode", this.state.zipcode);
+        localStorage.setItem("city", this.state.city);
         localStorage.setItem("lat", this.state.lat);
         localStorage.setItem("lon", this.state.lon);
         localStorage.setItem("tempScale", this.state.tempScale);
@@ -44,6 +47,9 @@ class App extends Component {
   }
 
   getCurrentWeather = () => {
+
+    console.log(this.state);
+
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
         .then((response) => {
@@ -64,12 +70,24 @@ class App extends Component {
             weatherData: myJson,
           });
         });
+    } else if (this.state.city != null & this.state.city !== "null") {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ this.state.city },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((myJson) => {
+          this.setState({
+            weatherData: myJson,
+          });
+        });
     } else {
       console.log("No Data");
     } 
   }
 
   getDailyWeather = () => {
+
+    console.log(this.state);
 
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
       fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${ this.state.lat }&lon=${ this.state.lon }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
@@ -91,7 +109,18 @@ class App extends Component {
             dailyWeatherData: myJson,
           });
         });
-    } else {
+    } else if (this.state.city != null & this.state.city !== "null") {
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${ this.state.city },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((myJson) => {
+          this.setState({
+            dailyWeatherData: myJson,
+          });
+        });
+    }    
+    else {
       console.log("No Data");
     } 
   }

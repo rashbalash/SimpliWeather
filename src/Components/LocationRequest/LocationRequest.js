@@ -6,15 +6,27 @@ class LocationRequest extends Component {
     
     state = {
         zipcode: null,
+        city: null,
         lat: null,
         lon: null,
         tempScale: "imperial",
     }
     
     handleSubmit = (e) => {
+
         e.preventDefault();      
+
+        if (isNaN(e.target.children[0].value) === true) {
+            this.setState({
+                city: e.target.children[0].value,
+            })
+        } else {
+            this.setState({
+                zipcode: e.target.children[0].value,
+            })
+        }
+
         this.setState({
-            [e.target.children[0].id]: e.target.children[0].value,
             lat: null,
             lon: null        
         }, () => {
@@ -23,9 +35,20 @@ class LocationRequest extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+
+        if (isNaN(e.target.value) === true) {
+            this.setState({
+                city: e.target.value,
+            })
+        } else {
+            this.setState({
+                zipcode: e.target.value,
+            })
+        }
+
+        // this.setState({
+        //     [e.target.id]: e.target.value
+        // })
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
@@ -66,7 +89,7 @@ class LocationRequest extends Component {
                     <p id="mainContext">Or Enter Your Zipcode!</p>
                     <br/>
                     <form id="LocationRequestForm" onSubmit= { this.handleSubmit }>
-                        <input type="text" id="zipcode" placeholder="Zipcode..." required onChange= { this.handleChange }/>
+                        <input type="text" id="zipcode" placeholder="Enter your City or Zipcode..." required onChange= { this.handleChange }/>
                         <br/>
                         <button id="submitBtn">Submit</button>
                     </form>
