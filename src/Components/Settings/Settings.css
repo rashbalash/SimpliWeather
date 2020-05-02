@@ -10,11 +10,13 @@ button {
 
 .light-button {
     background-color: white;
+    transition: ease 0.5s;
     color: black;
 }
 
 .dark-button {
-    background-color: #101010;
+    background-color: #202020;
+    transition: ease 0.5s;
     color: white;
 }
 

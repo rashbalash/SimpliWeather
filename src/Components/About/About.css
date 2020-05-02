@@ -1,0 +1,62 @@
+.modalButton {
+    background-color: none !important;
+}
+
+#svgIcon:hover {
+    background-color: pink;
+    transition: ease 0.5s;
+    border-radius: 50%;
+}
+
+#modalContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 600px;
+    max-width: 95%;
+    margin: auto;
+}
+
+#profileImage {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 50%;
+    margin: 15px 0px;
+}
+
+#modalText {
+    text-align: center;
+}
+
+#modalWrapper-dark {
+    background-color: black;
+    color: white;
+}
+
+#modalWrapper-dark .close {
+    opacity: 1;
+    color: white;
+}
+
+#modalWrapper-light {
+    background-color: white;
+    color: black;
+}
+
+#modalWrapper-light .close {
+    opacity: 1;
+    color: black;
+}
+
+#socialIconWrapper {
+    margin: auto;
+}
+
+.socialIconA-light {
+    margin: 0 5px;
+}
+
+.socialIconA-dark > svg {
+    margin: 0 5px;
+    fill: white;
+}

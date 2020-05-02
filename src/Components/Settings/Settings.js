@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import AboutModal from '../About/About';
 import './Settings.css';
 
 import { ReactComponent as Imperial } from './settingIcons/fahrenheit.svg';
 import { ReactComponent as Metric } from './settingIcons/celsius.svg';
-import { ReactComponent as About } from './settingIcons/about.svg';
 import { ReactComponent as Dark } from './settingIcons/dark.svg';
 import { ReactComponent as Light } from './settingIcons/light.svg';
-import { ReactComponent as Search } from './settingIcons/search.svg';
+// import { ReactComponent as Search } from './settingIcons/search.svg';
 import { ReactComponent as Trash } from './settingIcons/trash.svg';
 
 class Settings extends Component {
@@ -47,7 +47,7 @@ class Settings extends Component {
         return (
             <div id="settingsWrapper">
                 {/* Add | Search */}
-                <button className={ buttonClassName } ><Search className="svgIcon" /></button>
+                {/* <button className={ buttonClassName } ><Search className="svgIcon" /></button> */}
 
                 {/* Celsius | Fahrenheit */}
                 <button className={ buttonClassName } onClick= { this.props.handleTempScaleChange }>{ this.getScaleIcon() }</button>
@@ -59,7 +59,7 @@ class Settings extends Component {
                 <button className={ buttonClassName } onClick= { this.handleClear }> <Trash className="svgIcon" /> </button>
 
                 {/* About */}
-                <button className={ buttonClassName }><About className="svgIcon" /></button>
+                <button className={ buttonClassName }><AboutModal mode = { this.props.mode } /></button>
             </div>
         )
     }

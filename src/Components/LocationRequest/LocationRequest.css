@@ -4,7 +4,7 @@ button.btn {
     cursor: pointer;
     font-size: 72px;
     border-radius: 50%;
-    padding: 6px 15px;
+    padding: 6px 16.5px;
     transition: ease 0.5s;
 }
 
@@ -18,7 +18,7 @@ button.btn:hover {
 }
 
 #locationIcon {
-    margin-top: 15px;
+    margin-top: -10px;
     margin-right: 10px;
     margin-left: 5px;
     margin-bottom: 0px;
