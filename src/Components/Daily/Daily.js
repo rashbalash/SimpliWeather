@@ -4,8 +4,6 @@ import WeatherIcon from '../../weatherAnimation/WeatherIcon';
 
 function Daily(weatherData) {
 
-    console.log(weatherData);
-
     const { daily } = weatherData;
 
     var dailyData = [];
