@@ -2,35 +2,29 @@ import React from 'react';
 import './Hourly.css';
 import WeatherIcon from '../../weatherAnimation/WeatherIcon';
 
-function Hourly(dailyWeatherData) {
+function Hourly(weatherData) {
 
-    var { list } = dailyWeatherData;
+    var { hourly } = weatherData;
 
     var temp;
     var condition;
-    var timeRaw;
-    var time = "";
     var hourlyData = [];
-    var UTCtime;
 
-    for (var i = 0; i < 9; i++) {
-        temp = Math.round(list[i].main.temp);
-        condition = list[i].weather[0].id;
-        timeRaw = new Date(list[i].dt_txt.replace(/-/g, "/")).toLocaleTimeString();
-        UTCtime = new Date(list[i].dt_txt.replace(/-/g, "/")).getHours();
+    for (var i = 1; i < 13; i++) {
+        temp = Math.round(hourly[i].temp);
+        condition = hourly[i].weather[0].id;
+        
+        var hour = new Date((weatherData.hourly[i].dt) * 1000).getHours();
+                
+        var ifAmOrPm = hour > 12 ? 'PM' : 'AM';
 
-        if (timeRaw.length === 10) {
-            // remove indexes 4,5,6
-            time = timeRaw.slice(0,4);
-        } else {
-            // remove indexes 5,6,7
-            time = timeRaw.slice(0,5);
-        }
+        hour = hour > 12 ? hour - 12 : hour;
+        hour = hour === 0 ? hour + 12 : hour;
         
         hourlyData.push(
             <div key={ i } className = "dataWrapper">
-                <p className="dataValue">{ time }</p>
-                <div>{ WeatherIcon(condition, UTCtime) }</div>
+                <p className="dataValue">{ hour }:00 { ifAmOrPm }</p>
+                <div><WeatherIcon condition={condition} time={hour} /></div>
                 <p className = "dataValue">{ temp }&#176;</p>
             </div>
         );

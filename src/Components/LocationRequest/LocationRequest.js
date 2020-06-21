@@ -29,8 +29,8 @@ class LocationRequest extends Component {
         this.setState({
             lat: null,
             lon: null        
-        }, () => {
-            this.props.getLocation(this.state);
+        }, async () => {
+            await this.props.getLocation(this.state);
         }); 
     }
 
@@ -45,10 +45,6 @@ class LocationRequest extends Component {
                 zipcode: e.target.value,
             })
         }
-
-        // this.setState({
-        //     [e.target.id]: e.target.value
-        // })
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
@@ -57,7 +53,7 @@ class LocationRequest extends Component {
         timeout: 10000,
     }
 
-    success = (pos) => {
+    success = async (pos) => {
         var currentCoords = pos.coords;
 
         this.setState({
@@ -65,16 +61,16 @@ class LocationRequest extends Component {
             lon: currentCoords.longitude
         })
 
-        this.props.getLocation(this.state);
+        await this.props.getLocation(this.state);
     }
 
     error = (err) => {
         console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-    handleRequest = (e) => {
+    handleRequest = async (e) => {
         e.preventDefault();
-        navigator.geolocation.getCurrentPosition(this.success, this.error, this.options);
+        navigator.geolocation.getCurrentPosition(await this.success, this.error, this.options);
     }
 
     render() {

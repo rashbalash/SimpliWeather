@@ -17,22 +17,29 @@ class App extends Component {
       lat: localStorage.getItem("lat"), 
       lon: localStorage.getItem("lon"),
       weatherData: {},
-      dailyWeatherData: {},
       tempScale: localStorage.getItem("tempScale"),
       mode: localStorage.getItem("mode"),
     };
-    this.getCurrentWeather();
-    this.getDailyWeather();
   }
 
-  getLocation = (location) => {
+  componentDidMount = async () => {
+
+    const coordinates = await this.getCoordinates();
+    this.setState({lat: coordinates.coord.lat, lon: coordinates.coord.lon, city: coordinates.name });
+
+    const weather = await this.getWeather();
+    this.setState({weatherData: weather})
+
+  }
+
+  getLocation = async (location) => {
     this.setState({
       zipcode: location.zipcode,
       city: location.city,
       lat: location.lat,
       lon: location.lon,
       tempScale: "imperial",
-    }, () => {
+    }, async () => {
       if (typeof(Storage) !== "undefined") {
         localStorage.setItem("zipcode", this.state.zipcode);
         localStorage.setItem("city", this.state.city);
@@ -41,88 +48,45 @@ class App extends Component {
         localStorage.setItem("tempScale", this.state.tempScale);
         localStorage.setItem("mode", this.state.mode);
       }
-      this.getCurrentWeather();
-      this.getDailyWeather();
+
+      const coordinates = await this.getCoordinates();
+      this.setState({lat: coordinates.coord.lat, lon: coordinates.coord.lon, city: coordinates.name });
+
+      const weather = await this.getWeather();
+      this.setState({weatherData: weather})
+
     });
   }
 
-  getCurrentWeather = () => {
-
-    console.log(this.state);
-
+  getCoordinates = async () => {
+    let url;
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((myJson) => {
-          this.setState({
-            weatherData: myJson,
-          });
-        });
+      url = `https://api.openweathermap.org/data/2.5/weather?lat=${ this.state.lat }&lon=${ this.state.lon }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`;
     } else if (this.state.zipcode != null & this.state.zipcode !== "null") {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((myJson) => {
-          this.setState({
-            weatherData: myJson,
-          });
-        });
+      url = `https://api.openweathermap.org/data/2.5/weather?zip=${ this.state.zipcode },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`;
     } else if (this.state.city != null & this.state.city !== "null") {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ this.state.city },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((myJson) => {
-          this.setState({
-            weatherData: myJson,
-          });
-        });
+      url = `https://api.openweathermap.org/data/2.5/weather?q=${ this.state.city },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`;
     } else {
       console.log("No Data");
     } 
+
+    const response = await fetch(url);
+    return await response.json();
   }
 
-  getDailyWeather = () => {
-
-    console.log(this.state);
+  getWeather = async () => {
+    let weatherUrl;
 
     if ((this.state.lat !== "null" && this.state.lon !== "null") && (this.state.lat !== null && this.state.lon !== null))  {
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${ this.state.lat }&lon=${ this.state.lon }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
-        .then((response) => {
-        return response.json();
-      })
-      .then((myJson) => {
-        this.setState({
-          dailyWeatherData: myJson,
-        });
-      });
-    } else if (this.state.zipcode != null & this.state.zipcode !== "null") {
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${ this.state.zipcode },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((myJson) => {
-          this.setState({
-            dailyWeatherData: myJson,
-          });
-        });
-    } else if (this.state.city != null & this.state.city !== "null") {
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${ this.state.city },${ "US" }&units=${ this.state.tempScale }&appid=${ weatherApiKey }`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((myJson) => {
-          this.setState({
-            dailyWeatherData: myJson,
-          });
-        });
-    }    
-    else {
+      weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${ this.state.lat }&lon=${ this.state.lon }&units=${ this.state.tempScale }&exclude=minutely&appid=${ weatherApiKey }`
+    } else {
       console.log("No Data");
     } 
+
+
+    const response = await fetch(weatherUrl);
+    return await response.json();
+
   }
 
   handleMode = (e) => {
@@ -137,22 +101,22 @@ class App extends Component {
   handleTempScaleChange = (e) => {
     const newScale = this.state.tempScale === "imperial" ? "metric" : "imperial";
     this.setState({ tempScale: newScale },
-      () => {
+      async () => {
         localStorage.setItem("tempScale", newScale);
-        this.getCurrentWeather();
-        this.getDailyWeather();
-      });
+        const updateWeather = await this.getWeather();
+        this.setState({ weatherData: updateWeather });
+      });      
   }
 
   renderContent = () => {
-    const { weatherData, dailyWeatherData, zipcode, lat, tempScale, mode } = this.state;
+    const { weatherData, zipcode, lat, tempScale, mode, city } = this.state;
 
-    const hasLoadedWeather = weatherData.hasOwnProperty('name');
-    const hasLocation = zipcode || lat;
+    const hasLoadedWeather = weatherData.hasOwnProperty('timezone');
+    const hasLocation = lat || zipcode;
     var currentTime = new Date().getHours();
     
     if (hasLoadedWeather) {
-      return CurrentWeather(weatherData, dailyWeatherData, tempScale, this.handleTempScaleChange, this.handleMode, mode);
+      return CurrentWeather(weatherData, tempScale, this.handleTempScaleChange, this.handleMode, mode, city);
     } else if (hasLocation) {
       var conditionNumber = 0;
 
@@ -161,7 +125,7 @@ class App extends Component {
       } else {
         conditionNumber = 799;
       }
-      return <div id="loadingIcon">{ WeatherIcon(conditionNumber, currentTime, 3) }</div>
+      return <div id="loadingIcon"><WeatherIcon condition={conditionNumber} time={currentTime} iconSize={3} /></div>
     } else {
       return <LocationRequest id="LocationRequest" getLocation = { this.getLocation } />;
     }

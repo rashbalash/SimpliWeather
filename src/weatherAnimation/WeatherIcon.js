@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './WeatherIcon.css';
 
 import { ReactComponent as Cloudy } from './animated/cloudy.svg';
@@ -11,69 +11,79 @@ import { ReactComponent as LightSnow } from './animated/lightSnow.svg';
 import { ReactComponent as Night } from './animated/night.svg';
 import { ReactComponent as RainySunny } from './animated/rainySunny.svg';
 import { ReactComponent as Thunder } from './animated/thunder.svg';
+import { ReactComponent as Rainy } from './animated/rainy.svg';
 
-function WeatherIcon(condition, time, iconSize) {
+function WeatherIcon(props) {
+    
+    const { condition, time, iconSize } = props;
     
     // Series of if statements to select and display correct SVG
 
-    condition = parseInt(condition);
+    const parsedCondition = parseInt(condition);
 
-    var returnCondition;
+    var WeatherSvg;
 
-    if (condition === 799) {
-        returnCondition = <Night />;
+    if (parsedCondition === 799) {
+        WeatherSvg = Night;
 
-    } else if (condition >= 200 && condition <= 232) {
-        returnCondition = <Thunder />;
+    } else if (parsedCondition >= 200 && parsedCondition <= 232) {
+        WeatherSvg = Thunder;
 
-    } else if (condition > 801 && condition <= 804) {
-        returnCondition = <Cloudy />;
+    } else if (parsedCondition > 801 && parsedCondition <= 804) {
+        WeatherSvg = Cloudy;
 
-    } else if (condition === 801) {
+    } else if (parsedCondition === 801) {
         
-        if (time > 6 && time <= 18) {
-            returnCondition = <CloudyDay />;
+        if (time >= 6 && time <= 18) {
+            WeatherSvg = CloudyDay;
         } else {
-            returnCondition = <CloudyNight />;
+            WeatherSvg = CloudyNight;
         }
         
-    } else if (condition >= 701 && condition <= 781) {
-        returnCondition = <Cloudy />;
+    } else if (parsedCondition >= 701 && parsedCondition <= 781) {
+        WeatherSvg = Cloudy;
 
-    } else if (condition === 600 || (condition >= 611 && condition <= 620)) {
-        returnCondition = <LightSnow />;
+    } else if (parsedCondition === 600 || (parsedCondition >= 611 && parsedCondition <= 620)) {
+        WeatherSvg = LightSnow;
 
-    } else if (condition === 601 || condition === 602 || condition === 621 || condition === 622) {
-        returnCondition = <HeavySnow />;
+    } else if (parsedCondition === 601 || parsedCondition === 602 || parsedCondition === 621 || parsedCondition === 622) {
+        WeatherSvg = HeavySnow;
 
-    } else if (condition === 500 || condition === 501 || condition === 520 || condition === 531) {
-        returnCondition = <RainySunny />;
+    } else if (parsedCondition === 500 || parsedCondition === 501 || parsedCondition === 520 || parsedCondition === 531) {
+        
+        if (time >= 6 && time <= 18) {
+            WeatherSvg = RainySunny;
+        } else {
+            WeatherSvg = Rainy;
+        }
 
-    } else if ((condition >= 502 && condition <= 511) || condition === 521 || condition === 522) {
-        returnCondition = <HeavyRain />;
+    } else if ((parsedCondition >= 502 && parsedCondition <= 511) || parsedCondition === 521 || parsedCondition === 522) {
+        WeatherSvg = HeavyRain;
 
     } else {
-        if (time > 6 && time <= 18) {
-            returnCondition = <Day />;
+        if (time >= 6 && time <= 18) {
+            WeatherSvg = Day;
         } else {
-            returnCondition = <Night />;
+            WeatherSvg = Night;
         }
     }
 
-    var checkDefinition = document.getElementsByTagName("svg")[0];
-
-    if (checkDefinition !== undefined && iconSize === 2) {
-        checkDefinition.removeAttribute("width");
-        checkDefinition.removeAttribute("height");
-        checkDefinition.setAttribute("width", "150px");
-        checkDefinition.setAttribute("height", "120px");
-        checkDefinition.removeAttribute("viewBox");
-        checkDefinition.setAttribute("viewBox", "13 12 35 41");
-    }
+    const containerRef = useCallback(scaleIconContainer => {
+        
+        if (scaleIconContainer !== null && iconSize === 2) {
+            const scaleIcon = scaleIconContainer.getElementsByTagName("svg")[0];
+            scaleIcon.removeAttribute("width");
+            scaleIcon.removeAttribute("height");
+            scaleIcon.setAttribute("width", "150px");
+            scaleIcon.setAttribute("height", "120px");
+            scaleIcon.removeAttribute("viewBox");
+            scaleIcon.setAttribute("viewBox", "13 12 35 41");
+        }
+    }, []);
 
     return(
-        <div>
-            { returnCondition }
+        <div ref={containerRef}>
+            <WeatherSvg  />
         </div>
     )
 }

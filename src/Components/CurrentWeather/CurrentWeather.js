@@ -23,45 +23,37 @@ function rainUnits(rainPrecipitation, tempScale) {
     }
 }
 
-function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScaleChange, handleMode, mode) {
+function CurrentWeather(weatherData, tempScale, handleTempScaleChange, handleMode, mode, city) {
 
-    var { name, sys, main, weather, wind } = weatherData;
+    var { current, daily } = weatherData;
     
     // Current
-    var country = sys.country;
-    var mainTemp = main.temp;
-    var minTemp = main.temp_min;
-    var maxTemp = main.temp_max;
-    var conditions = weather[0].main;
-    var conditionNumber = weather[0].id;
+    var mainTemp = current.temp;
+    var minTemp = daily[0].temp.min;
+    var maxTemp = daily[0].temp.max;
+    var conditions = current.weather[0].main;
+    var conditionNumber = current.weather[0].id;
     var currentTime = new Date().getHours();
 
     // More About Today
-    var humidity = main.humidity;
-    var pressure = main.pressure;
-    var sunriseTime = (new Date(sys.sunrise*1000)).toLocaleTimeString();
-    var sunsetTime = (new Date(sys.sunset*1000)).toLocaleTimeString();
+    var humidity = current.humidity;
+    var pressure = current.pressure;
+    var sunriseTime = (new Date(current.sunrise*1000)).toLocaleTimeString();
+    var sunsetTime = (new Date(current.sunset*1000)).toLocaleTimeString();
     var sunrise = '';
     var sunset = '';
     
-    var windDegree = Math.round(((wind.deg) / 45) + 0.5);
+    var windDegree = Math.round(((current.wind_deg) / 45) + 0.5);
     var windArr = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
     var windDirection = windArr[(windDegree%8)];
-    var windSpeed = wind.speed;
+    var windSpeed = current.wind_speed;
 
-    if (weatherData.hasOwnProperty('rain')) {
-        var { rain } = weatherData;
+    if (weatherData.hasOwnProperty('current').hasOwnProperty('rain')) {
+        var { rain } = weatherData.current.rain;
         var rainPrecipitation = Math.round((rain["1h"]*0.0393701)*10)/10;
     } else {
         rainPrecipitation = 0;
     }
-
-    // if (weatherData.hasOwnProperty('snow')) {
-    //     var { snow } = weatherData;
-    //     if (snow["1h"]) {
-    //         var snowPrecipitation = snow["1h"] ? snow["1h"]*0.0393701 : snow["3h"]*0.0393701;
-    //     }
-    // }
 
     if (sunriseTime.length === 10) {
         // remove indexes 4,5,6
@@ -85,7 +77,7 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
 
     return(
         <div>
-            <p id="locationName">{ name }, { country }</p>
+            <p id="locationName">{ city }</p>
             
 
             <div id="currentWeatherContainer">
@@ -94,7 +86,7 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
                 <div id="currentTemperatureContainer"> 
                     {/* Display Icon Based On Weather */}
                     <div className="tempAndIcon">
-                        <div id="weatherIcon">{ WeatherIcon(conditionNumber, currentTime, 2) }</div>
+                        <div id="weatherIcon"><WeatherIcon condition={conditionNumber} time={currentTime} iconSize={2} /></div>
                         <p id="locationTemp">{ Math.round(mainTemp) }&#176;</p>
                     </div>
                     
@@ -104,14 +96,14 @@ function CurrentWeather(weatherData, dailyWeatherData, tempScale, handleTempScal
                 <div id="hourlyAndDailyTemperatureContainer">
                     <div id="hourlyDailyWrapper">
                     <h1 id="section">Hourly</h1>
-                    { dailyWeatherData.hasOwnProperty('city') ? 
-                        Hourly(dailyWeatherData) :
+                    { weatherData.hasOwnProperty('timezone') ? 
+                        Hourly(weatherData) :
                         ""
                     }
 
                     <h1 id="section">Daily</h1>
-                    { dailyWeatherData.hasOwnProperty('city') ? 
-                        Daily(dailyWeatherData) :
+                    { weatherData.hasOwnProperty('timezone') ? 
+                        Daily(weatherData) :
                         ""
                     }
                     </div>
