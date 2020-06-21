@@ -19,6 +19,7 @@ class App extends Component {
       weatherData: {},
       tempScale: localStorage.getItem("tempScale"),
       mode: localStorage.getItem("mode"),
+      errorMessage: ""
     };
   }
 
@@ -50,7 +51,14 @@ class App extends Component {
       }
 
       const coordinates = await this.getCoordinates();
-      this.setState({lat: coordinates.coord.lat, lon: coordinates.coord.lon, city: coordinates.name });
+
+      if (coordinates === null) {
+        localStorage.clear();
+        this.setState({zipcode: null, errorMessage: "Please enter a valid location"});
+        return;  
+      }
+
+      this.setState({lat: coordinates.coord.lat, lon: coordinates.coord.lon, city: coordinates.name, errorMessage: "" });
 
       const weather = await this.getWeather();
       this.setState({weatherData: weather})
@@ -71,6 +79,11 @@ class App extends Component {
     } 
 
     const response = await fetch(url);
+
+    if (response.status !== 200) {
+      return null;
+    }
+
     return await response.json();
   }
 
@@ -125,9 +138,9 @@ class App extends Component {
       } else {
         conditionNumber = 799;
       }
-      return <div id="loadingIcon"><WeatherIcon condition={conditionNumber} time={currentTime} iconSize={3} /></div>
+      return <div id="loadingIcon"><WeatherIcon condition={conditionNumber} time={currentTime} iconSize={2} /></div>
     } else {
-      return <LocationRequest id="LocationRequest" getLocation = { this.getLocation } />;
+      return <LocationRequest id="LocationRequest" getLocation = { this.getLocation } errorMessage = { this.state.errorMessage }/>;
     }
   }
 

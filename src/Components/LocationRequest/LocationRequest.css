@@ -94,3 +94,8 @@ button#submitBtn:hover {
         width: 80%;
     }
 }
+
+#errorText {
+    text-align: center;
+    color: red;
+}

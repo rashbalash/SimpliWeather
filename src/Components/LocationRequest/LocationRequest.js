@@ -84,6 +84,7 @@ class LocationRequest extends Component {
                     </form>
                     <p id="mainContext">Or Enter Your Zipcode!</p>
                     <br/>
+                    <p id="errorText">{ this.props.errorMessage }</p>
                     <form id="LocationRequestForm" onSubmit= { this.handleSubmit }>
                         <input type="text" id="zipcode" placeholder="Enter your City or Zipcode..." required onChange= { this.handleChange }/>
                         <br/>
