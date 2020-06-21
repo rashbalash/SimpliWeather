@@ -16,7 +16,7 @@ import { ReactComponent as Rainy } from './animated/rainy.svg';
 function WeatherIcon(props) {
     
     const { condition, time, iconSize } = props;
-    
+
     // Series of if statements to select and display correct SVG
 
     const parsedCondition = parseInt(condition);
