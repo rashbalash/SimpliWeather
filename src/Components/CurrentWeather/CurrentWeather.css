@@ -1,5 +1,5 @@
 div#currentWeatherContainer {
-    max-width: 1600px;
+    max-width: 2000px;
     margin: auto;
     display: flex;
     flex-flow: row wrap;
@@ -20,7 +20,7 @@ div#hourlyAndDailyTemperatureContainer {
     display: flex;
     flex-wrap: wrap;
     flex: 2;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 div#hourlyDailyWrapper {
@@ -33,7 +33,7 @@ div#MATContainer {
     margin: auto auto auto 20px;
 }
 
-@media all and (max-width: 1591px) {
+@media all and (max-width: 1952px) {
     div#MATContainer {
         width: 666px;
         margin: unset;
