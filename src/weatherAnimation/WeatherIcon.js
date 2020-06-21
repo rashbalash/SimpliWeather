@@ -74,7 +74,7 @@ function WeatherIcon(props) {
             const scaleIcon = scaleIconContainer.getElementsByTagName("svg")[0];
             scaleIcon.removeAttribute("width");
             scaleIcon.removeAttribute("height");
-            scaleIcon.setAttribute("width", "120px");
+            scaleIcon.setAttribute("width", "150px");
             scaleIcon.setAttribute("height", "120px");
             scaleIcon.removeAttribute("viewBox");
             scaleIcon.setAttribute("viewBox", "13 12 35 41");
