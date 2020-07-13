@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
         <div className="dark-body" id="privacyPolicyWrapper">
         
             <header id="mainHeader">
-                <a href="/"><p id="title">SimpliWeather</p></a>
+                <a href="/"><p id="titlePrivacy">SimpliWeather</p></a>
             </header>
 
             <div id="centerText">
