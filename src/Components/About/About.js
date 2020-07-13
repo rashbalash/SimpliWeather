@@ -39,6 +39,9 @@ function AboutModal(props) {
           <br/>
           If you'd like to contribute to this project, checkout my GitHub as well.
         </p>
+        
+        <a href="/privacy"><p id="modalText">Privacy Policy</p></a>
+        
       </Modal.Body>
       <Modal.Footer>
 

@@ -1,0 +1,15 @@
+.light-body {
+    background-color: white;
+    transition: ease 0.5s;
+    color: black;
+}
+
+.dark-body {
+    background-color: #202020;
+    transition: ease 0.5s;
+    color: white;
+}
+
+#container {
+    min-height: 100vh;
+}
