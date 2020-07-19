@@ -130,7 +130,7 @@ function CurrentWeather(weatherData, tempScale, handleTempScaleChange, handleMod
                                 <p id="matValue">{ sunset }</p>
 
                                 <p id="matTitle">Pressure</p>
-                                <p id="matValue">{ pressure } hPa</p>
+                                <p id="matValue">{ pressure } Pascals</p>
                             </div>                
                         </div>
                     </div>
